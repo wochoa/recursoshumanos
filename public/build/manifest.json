@@ -1,0 +1,656 @@
+{
+  "_avatar-1-15b743f1.js": {
+    "assets": [
+      "icons/avatar-1.jpg"
+    ],
+    "file": "assets/avatar-1-15b743f1.js"
+  },
+  "_error-img-38490432.js": {
+    "assets": [
+      "icons/error-img.png"
+    ],
+    "file": "assets/error-img-38490432.js"
+  },
+  "_index-ded0dff5.js": {
+    "file": "assets/index-ded0dff5.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_logo-9faa3827.js": {
+    "assets": [
+      "icons/logo.svg"
+    ],
+    "file": "assets/logo-9faa3827.js"
+  },
+  "_logo-light-9f0efe74.js": {
+    "assets": [
+      "icons/logo-dark.png",
+      "icons/logo-light.png"
+    ],
+    "file": "assets/logo-light-9f0efe74.js"
+  },
+  "_main-682060bd.js": {
+    "assets": [
+      "icons/us.jpg",
+      "icons/french.jpg",
+      "icons/spain.jpg",
+      "icons/chaina.png",
+      "icons/arabic.png",
+      "icons/logo-light.svg",
+      "icons/avatar-3.jpg",
+      "icons/avatar-4.jpg",
+      "icons/github.png",
+      "icons/bitbucket.png",
+      "icons/dribbble.png",
+      "icons/dropbox.png",
+      "icons/mail_chimp.png",
+      "icons/slack.png",
+      "icons/megamenu-img.png",
+      "icons/layout-1.jpg",
+      "icons/layout-2.jpg",
+      "icons/layout-3.jpg"
+    ],
+    "file": "assets/main-682060bd.js",
+    "imports": [
+      "resources/js/app.js",
+      "_logo-light-9f0efe74.js",
+      "_logo-9faa3827.js",
+      "_avatar-1-15b743f1.js"
+    ]
+  },
+  "_profile-img-1e13af7a.js": {
+    "assets": [
+      "icons/profile-img.png"
+    ],
+    "file": "assets/profile-img-1e13af7a.js"
+  },
+  "node_modules/leaflet/dist/images/layers-2x.png": {
+    "file": "icons/layers-2x.png",
+    "src": "node_modules/leaflet/dist/images/layers-2x.png"
+  },
+  "node_modules/leaflet/dist/images/layers.png": {
+    "file": "icons/layers.png",
+    "src": "node_modules/leaflet/dist/images/layers.png"
+  },
+  "node_modules/leaflet/dist/images/marker-icon.png": {
+    "file": "icons/marker-icon.png",
+    "src": "node_modules/leaflet/dist/images/marker-icon.png"
+  },
+  "resources/fonts/boxicons.eot": {
+    "file": "icons/boxicons.eot",
+    "src": "resources/fonts/boxicons.eot"
+  },
+  "resources/fonts/boxicons.svg": {
+    "file": "icons/boxicons.svg",
+    "src": "resources/fonts/boxicons.svg"
+  },
+  "resources/fonts/boxicons.ttf": {
+    "file": "icons/boxicons.ttf",
+    "src": "resources/fonts/boxicons.ttf"
+  },
+  "resources/fonts/boxicons.woff": {
+    "file": "icons/boxicons.woff",
+    "src": "resources/fonts/boxicons.woff"
+  },
+  "resources/fonts/boxicons.woff2": {
+    "file": "icons/boxicons.woff2",
+    "src": "resources/fonts/boxicons.woff2"
+  },
+  "resources/fonts/dripicons-v2.eot": {
+    "file": "icons/dripicons-v2.eot",
+    "src": "resources/fonts/dripicons-v2.eot"
+  },
+  "resources/fonts/dripicons-v2.svg": {
+    "file": "icons/dripicons-v2.svg",
+    "src": "resources/fonts/dripicons-v2.svg"
+  },
+  "resources/fonts/dripicons-v2.ttf": {
+    "file": "icons/dripicons-v2.ttf",
+    "src": "resources/fonts/dripicons-v2.ttf"
+  },
+  "resources/fonts/dripicons-v2.woff": {
+    "file": "icons/dripicons-v2.woff",
+    "src": "resources/fonts/dripicons-v2.woff"
+  },
+  "resources/fonts/fa-brands-400.eot": {
+    "file": "icons/fa-brands-400.eot",
+    "src": "resources/fonts/fa-brands-400.eot"
+  },
+  "resources/fonts/fa-brands-400.svg": {
+    "file": "icons/fa-brands-400.svg",
+    "src": "resources/fonts/fa-brands-400.svg"
+  },
+  "resources/fonts/fa-brands-400.ttf": {
+    "file": "icons/fa-brands-400.ttf",
+    "src": "resources/fonts/fa-brands-400.ttf"
+  },
+  "resources/fonts/fa-brands-400.woff": {
+    "file": "icons/fa-brands-400.woff",
+    "src": "resources/fonts/fa-brands-400.woff"
+  },
+  "resources/fonts/fa-brands-400.woff2": {
+    "file": "icons/fa-brands-400.woff2",
+    "src": "resources/fonts/fa-brands-400.woff2"
+  },
+  "resources/fonts/fa-regular-400.eot": {
+    "file": "icons/fa-regular-400.eot",
+    "src": "resources/fonts/fa-regular-400.eot"
+  },
+  "resources/fonts/fa-regular-400.svg": {
+    "file": "icons/fa-regular-400.svg",
+    "src": "resources/fonts/fa-regular-400.svg"
+  },
+  "resources/fonts/fa-regular-400.ttf": {
+    "file": "icons/fa-regular-400.ttf",
+    "src": "resources/fonts/fa-regular-400.ttf"
+  },
+  "resources/fonts/fa-regular-400.woff": {
+    "file": "icons/fa-regular-400.woff",
+    "src": "resources/fonts/fa-regular-400.woff"
+  },
+  "resources/fonts/fa-regular-400.woff2": {
+    "file": "icons/fa-regular-400.woff2",
+    "src": "resources/fonts/fa-regular-400.woff2"
+  },
+  "resources/fonts/fa-solid-900.eot": {
+    "file": "icons/fa-solid-900.eot",
+    "src": "resources/fonts/fa-solid-900.eot"
+  },
+  "resources/fonts/fa-solid-900.svg": {
+    "file": "icons/fa-solid-900.svg",
+    "src": "resources/fonts/fa-solid-900.svg"
+  },
+  "resources/fonts/fa-solid-900.ttf": {
+    "file": "icons/fa-solid-900.ttf",
+    "src": "resources/fonts/fa-solid-900.ttf"
+  },
+  "resources/fonts/fa-solid-900.woff": {
+    "file": "icons/fa-solid-900.woff",
+    "src": "resources/fonts/fa-solid-900.woff"
+  },
+  "resources/fonts/fa-solid-900.woff2": {
+    "file": "icons/fa-solid-900.woff2",
+    "src": "resources/fonts/fa-solid-900.woff2"
+  },
+  "resources/fonts/materialdesignicons-webfont.eot": {
+    "file": "icons/materialdesignicons-webfont.eot",
+    "src": "resources/fonts/materialdesignicons-webfont.eot"
+  },
+  "resources/fonts/materialdesignicons-webfont.ttf": {
+    "file": "icons/materialdesignicons-webfont.ttf",
+    "src": "resources/fonts/materialdesignicons-webfont.ttf"
+  },
+  "resources/fonts/materialdesignicons-webfont.woff": {
+    "file": "icons/materialdesignicons-webfont.woff",
+    "src": "resources/fonts/materialdesignicons-webfont.woff"
+  },
+  "resources/fonts/materialdesignicons-webfont.woff2": {
+    "file": "icons/materialdesignicons-webfont.woff2",
+    "src": "resources/fonts/materialdesignicons-webfont.woff2"
+  },
+  "resources/images/bg-auth-overlay.png": {
+    "file": "icons/bg-auth-overlay.png",
+    "src": "resources/images/bg-auth-overlay.png"
+  },
+  "resources/images/brands/bitbucket.png": {
+    "file": "icons/bitbucket.png",
+    "src": "resources/images/brands/bitbucket.png"
+  },
+  "resources/images/brands/dribbble.png": {
+    "file": "icons/dribbble.png",
+    "src": "resources/images/brands/dribbble.png"
+  },
+  "resources/images/brands/dropbox.png": {
+    "file": "icons/dropbox.png",
+    "src": "resources/images/brands/dropbox.png"
+  },
+  "resources/images/brands/github.png": {
+    "file": "icons/github.png",
+    "src": "resources/images/brands/github.png"
+  },
+  "resources/images/brands/mail_chimp.png": {
+    "file": "icons/mail_chimp.png",
+    "src": "resources/images/brands/mail_chimp.png"
+  },
+  "resources/images/brands/slack.png": {
+    "file": "icons/slack.png",
+    "src": "resources/images/brands/slack.png"
+  },
+  "resources/images/coming-soon.svg": {
+    "file": "icons/coming-soon.svg",
+    "src": "resources/images/coming-soon.svg"
+  },
+  "resources/images/crypto/bg-ico-hero.jpg": {
+    "file": "icons/bg-ico-hero.jpg",
+    "src": "resources/images/crypto/bg-ico-hero.jpg"
+  },
+  "resources/images/error-img.png": {
+    "file": "icons/error-img.png",
+    "src": "resources/images/error-img.png"
+  },
+  "resources/images/flags/arabic.png": {
+    "file": "icons/arabic.png",
+    "src": "resources/images/flags/arabic.png"
+  },
+  "resources/images/flags/chaina.png": {
+    "file": "icons/chaina.png",
+    "src": "resources/images/flags/chaina.png"
+  },
+  "resources/images/flags/french.jpg": {
+    "file": "icons/french.jpg",
+    "src": "resources/images/flags/french.jpg"
+  },
+  "resources/images/flags/spain.jpg": {
+    "file": "icons/spain.jpg",
+    "src": "resources/images/flags/spain.jpg"
+  },
+  "resources/images/flags/us.jpg": {
+    "file": "icons/us.jpg",
+    "src": "resources/images/flags/us.jpg"
+  },
+  "resources/images/layouts/layout-1.jpg": {
+    "file": "icons/layout-1.jpg",
+    "src": "resources/images/layouts/layout-1.jpg"
+  },
+  "resources/images/layouts/layout-2.jpg": {
+    "file": "icons/layout-2.jpg",
+    "src": "resources/images/layouts/layout-2.jpg"
+  },
+  "resources/images/layouts/layout-3.jpg": {
+    "file": "icons/layout-3.jpg",
+    "src": "resources/images/layouts/layout-3.jpg"
+  },
+  "resources/images/logo-dark.png": {
+    "file": "icons/logo-dark.png",
+    "src": "resources/images/logo-dark.png"
+  },
+  "resources/images/logo-light.png": {
+    "file": "icons/logo-light.png",
+    "src": "resources/images/logo-light.png"
+  },
+  "resources/images/logo-light.svg": {
+    "file": "icons/logo-light.svg",
+    "src": "resources/images/logo-light.svg"
+  },
+  "resources/images/logo.svg": {
+    "file": "icons/logo.svg",
+    "src": "resources/images/logo.svg"
+  },
+  "resources/images/maintenance.svg": {
+    "file": "icons/maintenance.svg",
+    "src": "resources/images/maintenance.svg"
+  },
+  "resources/images/megamenu-img.png": {
+    "file": "icons/megamenu-img.png",
+    "src": "resources/images/megamenu-img.png"
+  },
+  "resources/images/profile-img.png": {
+    "file": "icons/profile-img.png",
+    "src": "resources/images/profile-img.png"
+  },
+  "resources/images/users/avatar-1.jpg": {
+    "file": "icons/avatar-1.jpg",
+    "src": "resources/images/users/avatar-1.jpg"
+  },
+  "resources/images/users/avatar-3.jpg": {
+    "file": "icons/avatar-3.jpg",
+    "src": "resources/images/users/avatar-3.jpg"
+  },
+  "resources/images/users/avatar-4.jpg": {
+    "file": "icons/avatar-4.jpg",
+    "src": "resources/images/users/avatar-4.jpg"
+  },
+  "resources/js/app.css": {
+    "file": "css/app.min.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "assets": [
+      "icons/layers.png",
+      "icons/layers-2x.png",
+      "icons/marker-icon.png"
+    ],
+    "css": [
+      "css/app.min.css"
+    ],
+    "dynamicImports": [
+      "resources/js/views/home.vue",
+      "resources/js/views/sample-pages/login-sample.vue",
+      "resources/js/views/account/login.vue",
+      "resources/js/views/account/register.vue",
+      "resources/js/views/sample-pages/login-2.vue",
+      "resources/js/views/account/register.vue",
+      "resources/js/views/account/forgot-password.vue",
+      "resources/js/views/account/reset-password.vue",
+      "resources/js/views/sample-pages/register-2.vue",
+      "resources/js/views/sample-pages/recoverpw-sample.vue",
+      "resources/js/views/sample-pages/recoverpwd-2.vue",
+      "resources/js/views/sample-pages/lockscreen.vue",
+      "resources/js/views/sample-pages/lockscreen-2.vue",
+      "resources/js/views/sample-pages/confirm-mail.vue",
+      "resources/js/views/sample-pages/confirm-mail-2.vue",
+      "resources/js/views/sample-pages/email-verification.vue",
+      "resources/js/views/sample-pages/email-verification-2.vue",
+      "resources/js/views/sample-pages/two-step-verification.vue",
+      "resources/js/views/sample-pages/two-step-verification-2.vue",
+      "resources/js/views/utility/starter.vue",
+      "resources/js/views/utility/maintenance.vue",
+      "resources/js/views/utility/coming-soon.vue",
+      "resources/js/views/utility/404.vue",
+      "resources/js/views/utility/500.vue"
+    ],
+    "file": "js/app2.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/js/views/account/forgot-password.vue": {
+    "file": "assets/forgot-password-f7485d4b.js",
+    "imports": [
+      "_profile-img-1e13af7a.js",
+      "_logo-9faa3827.js",
+      "_index-ded0dff5.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/account/forgot-password.vue"
+  },
+  "resources/js/views/account/login.vue": {
+    "file": "assets/login-74a6465b.js",
+    "imports": [
+      "_profile-img-1e13af7a.js",
+      "_logo-9faa3827.js",
+      "_index-ded0dff5.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/account/login.vue"
+  },
+  "resources/js/views/account/register.vue": {
+    "file": "assets/register-9caf8ee6.js",
+    "imports": [
+      "_profile-img-1e13af7a.js",
+      "_logo-9faa3827.js",
+      "_index-ded0dff5.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/account/register.vue"
+  },
+  "resources/js/views/account/reset-password.vue": {
+    "file": "assets/reset-password-219a98bb.js",
+    "imports": [
+      "_profile-img-1e13af7a.js",
+      "_logo-9faa3827.js",
+      "_index-ded0dff5.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/account/reset-password.vue"
+  },
+  "resources/js/views/home.vue": {
+    "file": "assets/home-c7d9cc5a.js",
+    "imports": [
+      "_main-682060bd.js",
+      "_profile-img-1e13af7a.js",
+      "_avatar-1-15b743f1.js",
+      "resources/js/app.js",
+      "_logo-light-9f0efe74.js",
+      "_logo-9faa3827.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/home.vue"
+  },
+  "resources/js/views/sample-pages/confirm-mail-2.css": {
+    "file": "css/confirm-mail-2.min.css",
+    "src": "resources/js/views/sample-pages/confirm-mail-2.css"
+  },
+  "resources/js/views/sample-pages/confirm-mail-2.vue": {
+    "css": [
+      "css/confirm-mail-2.min.css"
+    ],
+    "file": "assets/confirm-mail-2-d9a72e87.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/confirm-mail-2.vue"
+  },
+  "resources/js/views/sample-pages/confirm-mail.vue": {
+    "file": "assets/confirm-mail-04474382.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/confirm-mail.vue"
+  },
+  "resources/js/views/sample-pages/email-verification-2.css": {
+    "file": "css/email-verification-2.min.css",
+    "src": "resources/js/views/sample-pages/email-verification-2.css"
+  },
+  "resources/js/views/sample-pages/email-verification-2.vue": {
+    "css": [
+      "css/email-verification-2.min.css"
+    ],
+    "file": "assets/email-verification-2-eccb2856.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/email-verification-2.vue"
+  },
+  "resources/js/views/sample-pages/email-verification.vue": {
+    "file": "assets/email-verification-171bd806.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/email-verification.vue"
+  },
+  "resources/js/views/sample-pages/lockscreen-2.css": {
+    "file": "css/lockscreen-2.min.css",
+    "src": "resources/js/views/sample-pages/lockscreen-2.css"
+  },
+  "resources/js/views/sample-pages/lockscreen-2.vue": {
+    "css": [
+      "css/lockscreen-2.min.css"
+    ],
+    "file": "assets/lockscreen-2-94aae1f6.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "_avatar-1-15b743f1.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/lockscreen-2.vue"
+  },
+  "resources/js/views/sample-pages/lockscreen.vue": {
+    "file": "assets/lockscreen-6c32524e.js",
+    "imports": [
+      "_profile-img-1e13af7a.js",
+      "_logo-9faa3827.js",
+      "_avatar-1-15b743f1.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/lockscreen.vue"
+  },
+  "resources/js/views/sample-pages/login-2.css": {
+    "file": "css/login-2.min.css",
+    "src": "resources/js/views/sample-pages/login-2.css"
+  },
+  "resources/js/views/sample-pages/login-2.vue": {
+    "css": [
+      "css/login-2.min.css"
+    ],
+    "file": "assets/login-2-e7ef1acc.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/login-2.vue"
+  },
+  "resources/js/views/sample-pages/login-sample.vue": {
+    "file": "assets/login-sample-2fb424ed.js",
+    "imports": [
+      "_profile-img-1e13af7a.js",
+      "_logo-9faa3827.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/login-sample.vue"
+  },
+  "resources/js/views/sample-pages/recoverpw-sample.vue": {
+    "file": "assets/recoverpw-sample-fad37eee.js",
+    "imports": [
+      "_profile-img-1e13af7a.js",
+      "_logo-9faa3827.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/recoverpw-sample.vue"
+  },
+  "resources/js/views/sample-pages/recoverpwd-2.css": {
+    "file": "css/recoverpwd-2.min.css",
+    "src": "resources/js/views/sample-pages/recoverpwd-2.css"
+  },
+  "resources/js/views/sample-pages/recoverpwd-2.vue": {
+    "css": [
+      "css/recoverpwd-2.min.css"
+    ],
+    "file": "assets/recoverpwd-2-c70eead5.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/recoverpwd-2.vue"
+  },
+  "resources/js/views/sample-pages/register-2.css": {
+    "file": "css/register-2.min.css",
+    "src": "resources/js/views/sample-pages/register-2.css"
+  },
+  "resources/js/views/sample-pages/register-2.vue": {
+    "css": [
+      "css/register-2.min.css"
+    ],
+    "file": "assets/register-2-a003c793.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/register-2.vue"
+  },
+  "resources/js/views/sample-pages/two-step-verification-2.css": {
+    "file": "css/two-step-verification-2.min.css",
+    "src": "resources/js/views/sample-pages/two-step-verification-2.css"
+  },
+  "resources/js/views/sample-pages/two-step-verification-2.vue": {
+    "css": [
+      "css/two-step-verification-2.min.css"
+    ],
+    "file": "assets/two-step-verification-2-6b996d77.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/two-step-verification-2.vue"
+  },
+  "resources/js/views/sample-pages/two-step-verification.vue": {
+    "file": "assets/two-step-verification-79a046e3.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/sample-pages/two-step-verification.vue"
+  },
+  "resources/js/views/utility/404.vue": {
+    "file": "assets/404-5334167e.js",
+    "imports": [
+      "_error-img-38490432.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/utility/404.vue"
+  },
+  "resources/js/views/utility/500.vue": {
+    "file": "assets/500-36210f1a.js",
+    "imports": [
+      "_error-img-38490432.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/utility/500.vue"
+  },
+  "resources/js/views/utility/coming-soon.vue": {
+    "assets": [
+      "icons/coming-soon.svg"
+    ],
+    "file": "assets/coming-soon-435f7f99.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/utility/coming-soon.vue"
+  },
+  "resources/js/views/utility/maintenance.vue": {
+    "assets": [
+      "icons/maintenance.svg"
+    ],
+    "file": "assets/maintenance-11ce57d2.js",
+    "imports": [
+      "_logo-light-9f0efe74.js",
+      "resources/js/app.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/utility/maintenance.vue"
+  },
+  "resources/js/views/utility/starter.css": {
+    "file": "css/starter.min.css",
+    "src": "resources/js/views/utility/starter.css"
+  },
+  "resources/js/views/utility/starter.vue": {
+    "css": [
+      "css/starter.min.css"
+    ],
+    "file": "assets/starter-ff5ad3c7.js",
+    "imports": [
+      "_main-682060bd.js",
+      "resources/js/app.js",
+      "_logo-light-9f0efe74.js",
+      "_logo-9faa3827.js",
+      "_avatar-1-15b743f1.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "resources/js/views/utility/starter.vue"
+  },
+  "resources/sass/app-rtl.scss": {
+    "file": "css/app-rtl.min.css",
+    "isEntry": true,
+    "src": "resources/sass/app-rtl.scss"
+  },
+  "resources/sass/app.scss": {
+    "file": "css/app.min2.css",
+    "isEntry": true,
+    "src": "resources/sass/app.scss"
+  },
+  "resources/sass/bootstrap.scss": {
+    "file": "css/bootstrap.min.css",
+    "isEntry": true,
+    "src": "resources/sass/bootstrap.scss"
+  },
+  "resources/sass/icons.scss": {
+    "file": "css/icons.min.css",
+    "isEntry": true,
+    "src": "resources/sass/icons.scss"
+  }
+}
