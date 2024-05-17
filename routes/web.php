@@ -8,6 +8,7 @@ use App\Http\Controllers\RolesypermisosController as Rolesypermisos;
 use App\Http\Controllers\DependenciaController as Dependencia;
 use App\Http\Controllers\Usuarios as Usuarios;
 use App\Http\Controllers\AsistenciasController;
+use App\Http\Controllers\EscalafonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,10 @@ Route::get('datospersonales', [Usuarios::class, 'datospersonales']);
 
 // REGISTRO DE ASISTENCIAS
 Route::get('aistencias',[AsistenciasController::class, 'index'])->name('asistencias');
+
+// REGISTRO DE EMPLEADOS DE LA BASE DE DATOS ESCALAFON
+route::get('empleados',[EscalafonController::class,'index'])->name('empleados.index');
+route::get('resuempleado',[EscalafonController::class,'resumen'])->name('empleados.resumen');
 
 
 

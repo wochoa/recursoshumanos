@@ -2,6 +2,7 @@
 import Layout from "../../layouts/main.vue";
 import PageHeader from "../../components/page-header.vue";
 import Datepicker from "vue3-datepicker";
+import Resumenempleado from "./Resuempleados.vue";
 
 import axios from 'axios';
 /**
@@ -11,7 +12,7 @@ export default {
   page: {
     title: "Jobs List",
   },
-  components: { Layout, PageHeader, Datepicker },
+  components: { Layout, PageHeader, Datepicker,Resumenempleado },
   data() {
     return {
       title: this.$route.meta.title,
@@ -27,7 +28,7 @@ export default {
         }
       ],
       datepickervalue: new Date(),
-      getAllusuarios:{},
+      empleados:{},
     };
   },
   computed: {
@@ -41,11 +42,11 @@ export default {
     },
     methods:{
         Buscarusuarios(page = 1) {
-            var url = '/listausuarios?page=' + page
+            var url = '/empleados?page=' + page
             axios.get(url, {
                 params: this.formData
             }).then(response => {
-                this.getAllusuarios = response.data
+                this.empleados = response.data
             })
             //     } else {
             //         console.log('incompleto')
@@ -62,6 +63,7 @@ export default {
 <template>
   <Layout>
     <PageHeader :title="title" :items="items" />
+    <Resumenempleado />
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
@@ -69,7 +71,7 @@ export default {
             <div class="d-flex align-items-center">
               <h5 class="mb-0 card-title flex-grow-1">{{ $route.meta.title }}</h5>
               <div class="flex-shrink-0">
-                <a href="#!" class="btn btn-primary me-1">Nuevo usuario</a>
+                <a href="#!" class="btn btn-primary me-1"> <i class="mdi mdi-account-plus"></i> Nuevo empleado</a>
                 <a href="#!" class="btn btn-light me-1"><i class="mdi mdi-refresh"></i></a>
                 <div class="dropdown d-inline-block">
 
@@ -125,31 +127,33 @@ export default {
                     <th scope="col">ID</th>
                     <th scope="col">Nombres</th>
                     <th scope="col">DNI/CEL</th>
-                    <th scope="col">Dependencia</th>
+                    <th scope="col">F.Nacimiento</th>
                     <!-- <th scope="col">Location</th> -->
                     <!-- <th scope="col">Experience</th> -->
                     <!-- <th scope="col">Position</th> -->
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Inicio</th>
-                    <th scope="col">Término</th>
-                    <th scope="col">Estado</th>
+                    <th scope="col">Regimen</th>
+                    <th scope="col">Vinculo</th>
+                    <!-- <th scope="col">Término</th> -->
+                    <th scope="col">Sexo</th>
                     <th scope="col">Acción</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="list in getAllusuarios.data" :key="list.id">
+                  <tr v-for="list in empleados.data" :key="list.id">
                     <th scope="row">{{ list.id }}</th>
-                    <td><small>{{ list.adm_name }} {{ list.adm_lastname }}<br><b>{{ list.adm_cargo}}</b> </small></td>
-                    <td><small> <b>DNI:</b>{{ list.adm_dni}} <br><b>Cel:</b>{{ list.adm_telefono}}</small></td>
-                    <td><small>{{ list.dependencia.depe_nombre?list.dependencia.depe_nombre:null }}</small></td>
+                    <td><small>{{ list.nombres }} {{ list.apellidos}}<br><b>Cargo actual:</b>{{ list.cargoactual}} </small></td>
+                    <td><small> <b>DNI:</b>{{ list.dni}} <br><b>Cel:</b>{{ list.celular}}</small></td>
+                    <td><small>{{ list.nacimiento }}</small></td>
                     <!-- <td>California</td> -->
                     <!-- <td>0-2 Years</td> -->
                     <!-- <td>2</td> -->
-                    <td><span class="badge badge-soft-success">Indeterminado</span></td>
-                    <td>02 June 2021</td>
-                    <td>25 June 2021</td>
-                    <td v-if="list.adm_estado==1"><span class="badge bg-success">Active</span></td>
-                    <td v-else="list.adm_estado==1"><span class="badge bg-danger">Active</span></td>
+                    <!-- <td><span class="badge badge-soft-success">Indeterminado</span></td> -->
+                    <td>{{ list.regimen }}</td>
+                    <td>{{ list.vinculo }}</td>
+                    <!-- <td>25 June 2021</td> -->
+                    <td v-if="list.sexo=='MA'"><span class="me-1 badge bg-primary rounded-pill">Masculino</span></td>
+                    <td v-else><span class="me-1 badge bg-danger rounded-pill">Femenino</span></td>
+                    <!-- <td v-else="list.adm_estado==1"><span class="badge bg-danger">Active</span></td> -->
                     <td>
                       <ul class="list-unstyled hstack gap-1 mb-0">
                         <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="View">

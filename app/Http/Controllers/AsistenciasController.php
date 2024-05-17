@@ -4,15 +4,43 @@ namespace App\Http\Controllers;
 
 use App\Models\asistencias;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AsistenciasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return asistencias::paginate(10);
+        $datos=$request->all();
+        $fechaini= date("d-m-Y", strtotime($request->fechaini));
+        $fechafin= date("d-m-Y", strtotime($request->fechafin));
+        $where=[];
+        if ($request->dni <> '')
+            $where[] = ['dni', $request->dni];
+
+        if($request->fechaini <> '' and $request->fechafin <> '')
+        {
+            if(count($where)>0)
+            {// cuando tiene elemenos where
+                $datos=DB::connection('asistencias')->table('biotime')->where($where)->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('fecha','desc')->paginate(10);
+            }
+            else{
+                $datos=DB::connection('asistencias')->table('biotime')->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('fecha','desc')->paginate(10);
+            }
+        }
+        else{
+            if(count($where)>0)
+            {// cuando tiene elemenos where
+                $datos=DB::connection('asistencias')->table('biotime')->where($where)->orderBy('fecha','desc')->paginate(10);
+            }
+            else{
+                $datos=DB::connection('asistencias')->table('biotime')->orderBy('fecha','desc')->paginate(10);
+            }
+        }
+
+        return $datos;
     }
 
     /**

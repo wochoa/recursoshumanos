@@ -12,12 +12,12 @@ const routes = [
     },
     {
         path: '/usuarios/lista',
-        meta: { authRequired: true, title: 'Lista de usuarios' },
+        meta: { authRequired: true, title: 'Lista de empleados' },
         component: () => import('../vistaSGD/usuarios/listausuarios.vue')
     },
     {
         path: '/usuarios/asistencias',
-        meta: { authRequired: true, title: 'Asistencias de usuarios' },
+        meta: { authRequired: true, title: 'Asistencias de empleados' },
         component: () => import('../vistaSGD/usuarios/Asistencias.vue')
     },
     {

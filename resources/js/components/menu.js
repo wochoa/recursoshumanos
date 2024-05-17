@@ -35,7 +35,7 @@ export const menuItems = [
         subItems: [
             {
                 id: 6,
-                label: "Lista de usuarios",
+                label: "Lista de empleados",
                 link: "/usuarios/lista",
                 parentId: 5
             },
