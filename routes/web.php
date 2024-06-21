@@ -46,11 +46,14 @@ Route::get('listausuarios', [Usuarios::class, 'listausuarios']);
 Route::get('datospersonales', [Usuarios::class, 'datospersonales']);
 
 // REGISTRO DE ASISTENCIAS
-Route::get('aistencias',[AsistenciasController::class, 'index'])->name('asistencias');
+Route::get('asistencias',[AsistenciasController::class, 'index'])->name('asistencias');
+Route::get('asistenciaxdni',[AsistenciasController::class, 'asistenciaxdni'])->name('asistenciaxdni');// para calendario
+Route::get('listasistenciaxdni',[AsistenciasController::class, 'listasistenciaxdni'])->name('listasistenciaxdni');// para tablas
 
 // REGISTRO DE EMPLEADOS DE LA BASE DE DATOS ESCALAFON
 route::get('empleados',[EscalafonController::class,'index'])->name('empleados.index');
 route::get('resuempleado',[EscalafonController::class,'resumen'])->name('empleados.resumen');
+route::get('empleadoxdni',[EscalafonController::class,'empleadoxdni'])->name('empleados.empleadoxdni');
 
 
 

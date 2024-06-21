@@ -12,13 +12,18 @@ const routes = [
     },
     {
         path: '/usuarios/lista',
-        meta: { authRequired: true, title: 'Lista de empleados' },
+        meta: { authRequired: true, title: 'Lista de empleados de escalafón' },
         component: () => import('../vistaSGD/usuarios/listausuarios.vue')
     },
     {
         path: '/usuarios/asistencias',
         meta: { authRequired: true, title: 'Asistencias de empleados' },
         component: () => import('../vistaSGD/usuarios/Asistencias.vue')
+    },
+    {
+        path: '/usuarios/asistencias/:dni/record',
+        meta: { authRequired: true, title: 'Record de asistencias' },
+        component: () => import('../vistaSGD/calendario/calendar-asistencia.vue')
     },
     {
         path: '/usuarios/detalle',

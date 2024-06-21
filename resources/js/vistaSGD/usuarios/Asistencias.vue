@@ -37,7 +37,7 @@ export default {
                 dni: '',
                 fechaini: '',
                 fechafin: '',
-                page:''
+                page: ''
             }
         };
     },
@@ -53,9 +53,9 @@ export default {
     methods: {
         Buscarusuarios(page = 1) {
 
-            var url = '/aistencias'
+            var url = '/asistencias'
 
-            this.frmbusqueda.page=page
+            this.frmbusqueda.page = page
 
             axios.get(url, {
                 params: this.frmbusqueda
@@ -66,9 +66,8 @@ export default {
         primeraletra(string) {
             return string.charAt(0).toUpperCase();
         },
-        upfechafinal()
-        {
-            this.frmbusqueda.fechafin=this.frmbusqueda.fechaini
+        upfechafinal() {
+            this.frmbusqueda.fechafin = this.frmbusqueda.fechaini
         }
     }
 };
@@ -105,29 +104,23 @@ export default {
                                 <input type="text" class="form-control" id="searchTableList" placeholder="DNI ..." v-model="frmbusqueda.dni" autofocus>
                             </div>
 
-                            <!-- <div class="col-xxl-2 col-lg-4">
-                            <select class="form-select" id="idType" aria-label="Default select example">
-                                <option value="all">Tipo Regimen</option>
-                                <option value="Full Time">276</option>
-                                <option value="Part Time">1057</option>
-                                <option value="Part Time">728</option>
-                            </select>
-                        </div> -->
-                            <div class="col-xxl-2 col-lg-4">
+                            <div class="col-xxl-2 col-lg-3">
                                 <label for="">Fecha inicio</label>
                                 <input type="date" v-model="frmbusqueda.fechaini" class="form-control" placeholder="Fecha Inicio" @keyup="upfechafinal">
                             </div>
-                            <div class="col-xxl-2 col-lg-4">
+                            <div class="col-xxl-2 col-lg-3">
                                 <label for="">Fecha fin</label>
                                 <input type="date" v-model="frmbusqueda.fechafin" class="form-control" placeholder="Fecha fin">
                             </div>
-                            <div class="col-xxl-2 col-lg-4 pt-4">
+                            <div class="col-xxl-2 col-lg-3 pt-4">
                                 <button type="submit" class="btn btn-secondary"><i class="mdi mdi-filter-outline"></i>
                                     Buscar</button>
                             </div>
-                            <div class="col-xxl-2 col-lg-4 pt-4">
-                                <button type="submit" class="btn btn-info"><i class="mdi mdi-filter-outline align-middle"></i>
-                                    Recor de asistencias</button>
+                            <div class="col-xxl-2 col-lg-3 pt-4" v-if="frmbusqueda.dni.length>=8">
+                                <router-link :to="'/usuarios/asistencias/'+frmbusqueda.dni+'/record'" class="btn btn-info">
+                                    <i class="mdi mdi-filter-outline align-middle"></i>
+                                    Recor de asistencias
+                                </router-link>
                             </div>
                         </div>
                     </form>
@@ -144,9 +137,6 @@ export default {
                                     <th scope="col">HORA</th>
 
                                     <th scope="col">ESTADO</th>
-                                    <!-- <th scope="col">Fecha</th> -->
-                                    <!-- <th scope="col">Término</th> -->
-                                    <!-- <th scope="col">Estado</th> -->
                                     <th scope="col">Acción</th>
                                 </tr>
                             </thead>
@@ -160,14 +150,9 @@ export default {
                                     </td>
                                     <td><small> {{ list.fecha }}</small></td>
                                     <td><small>{{ list.hora }}</small></td>
-                                    <!-- <td>California</td> -->
-                                    <!-- <td>0-2 Years</td> -->
-                                    <!-- <td>2</td> -->
+
                                     <td><small>{{ list.estado }}</small></td>
-                                    <!-- <td>02 June 2021</td> -->
-                                    <!-- <td>15-04-2024</td> -->
-                                    <!-- <td v-if="list.adm_estado==1"><span class="badge bg-success">Active</span></td>
-                    <td v-else="list.adm_estado==1"><span class="badge bg-danger">Active</span></td> -->
+
                                     <td>
                                         <ul class="list-unstyled hstack gap-1 mb-0">
                                             <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="View">
@@ -197,26 +182,8 @@ export default {
                         <div class="col-auto">
                             <div class="card d-inline-block ms-auto mb-0">
                                 <div class="card-body p-2">
-                                    <paginate :page-count="asistencias.last_page" :page-range="3" :margin-pages="2" :click-handler="Buscarusuarios" :prev-text="'Prev'" :next-text="'Next'" :container-class="'pagination mb-0'" :page-class="'page-item'"></paginate>
-                                    <!-- <nav aria-label="Page navigation example" class="mb-0">
-                                        <ul class="pagination mb-0">
-                                            <li class="page-item">
-                                                <a class="page-link" href="javascript:void(0);" aria-label="Previous">
-                                                    <span aria-hidden="true">«</span>
-                                                </a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-                                            <li class="page-item active"><a class="page-link" href="javascript:void(0);">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0);">...</a></li>
-                                            <li class="page-item"><a class="page-link" href="javascript:void(0);">12</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="javascript:void(0);" aria-label="Next">
-                                                    <span aria-hidden="true">»</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav> -->
+                                    <paginate :page-count="asistencias.last_page" :page-range="3" :margin-pages="2" :click-handler="Buscarusuarios" :prev-text="'<<'" :next-text="'>>'" :container-class="'pagination mb-0'" :page-class="'page-item'"></paginate>
+
                                 </div>
                             </div>
                         </div>

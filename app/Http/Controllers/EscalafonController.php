@@ -16,12 +16,45 @@ class EscalafonController extends Controller
         return $datos;
     }
 
+    public function empleadoxdni(Request $request)
+    {
+        // $data=$request->all();
+
+        $datos=DB::connection('escalafon')->table('empleados')->where('dni',$request->dni)->get();
+        return $datos;
+    }
+
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function resumen()
     {
-        //
+        $masculinos=DB::connection('escalafon')->table('empleados')->where('sexo','MA')->count();
+        $femenino=DB::connection('escalafon')->table('empleados')->where('sexo','FE')->count();
+        $casindeterminado=DB::connection('escalafon')->table('empleados')->where('regimen','CAS indeterminado')->count();
+        $nombrado=DB::connection('escalafon')->table('empleados')->where('regimen','276 nombrado')->count();
+        $temporal=DB::connection('escalafon')->table('empleados')->where('regimen','CAS temporal')->count();
+        $directivo=DB::connection('escalafon')->table('empleados')->where('regimen','CAS directivo')->count();
+        $medidacautelar=DB::connection('escalafon')->table('empleados')->where('regimen','CAS medida cautelar')->count();
+        $mandatojudicial=DB::connection('escalafon')->table('empleados')->where('regimen','276 mandato judicial')->count();
+        $cassuplencia=DB::connection('escalafon')->table('empleados')->where('regimen','CAS suplencia')->count();
+        $designado276=DB::connection('escalafon')->table('empleados')->where('regimen','276 designado')->count();
+        $total=DB::connection('escalafon')->table('empleados')->count();
+
+        $datos=array('masculinos'=>$masculinos,
+        'femenino'=>$femenino,
+        'casindeterminado'=>$casindeterminado,
+        'nombrado'=>$nombrado,
+        'temporal'=>$temporal,
+        'directivo'=>$directivo,
+        'medidacautelar'=>$medidacautelar,
+        'mandatojudicial'=>$mandatojudicial,
+        'cassuplencia'=>$cassuplencia,
+        'designado276'=>$designado276,
+        'total'=>$total
+    );
+
+        return response()->json($datos , 200);
     }
 
     /**
@@ -29,7 +62,7 @@ class EscalafonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

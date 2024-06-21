@@ -3,6 +3,7 @@ import Layout from "../../layouts/main.vue";
 import PageHeader from "../../components/page-header.vue";
 import Datepicker from "vue3-datepicker";
 import Resumenempleado from "./Resuempleados.vue";
+import Paginate from 'vuejs-paginate-next';
 
 import axios from 'axios';
 /**
@@ -12,7 +13,7 @@ export default {
   page: {
     title: "Jobs List",
   },
-  components: { Layout, PageHeader, Datepicker,Resumenempleado },
+  components: { Layout, PageHeader, Datepicker,Resumenempleado,paginate: Paginate, },
   data() {
     return {
       title: this.$route.meta.title,
@@ -72,15 +73,14 @@ export default {
               <h5 class="mb-0 card-title flex-grow-1">{{ $route.meta.title }}</h5>
               <div class="flex-shrink-0">
                 <a href="#!" class="btn btn-primary me-1"> <i class="mdi mdi-account-plus"></i> Nuevo empleado</a>
-                <a href="#!" class="btn btn-light me-1"><i class="mdi mdi-refresh"></i></a>
+                <a href="#!" class="btn btn-light me-1"><i class="mdi mdi-refresh"></i> Sincronizar</a>
                 <div class="dropdown d-inline-block">
 
                   <button type="menu" class="btn btn-success" id="dropdownMenuButton1" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="mdi mdi-dots-vertical"></i></button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="#">Exportar pdf</a></li>
+                                    <li><a class="dropdown-item" href="#">Exportar excel</a></li>
                   </ul>
                 </div>
               </div>
@@ -109,8 +109,9 @@ export default {
               </div>
               <div class="col-xxl-2 col-lg-4">
                 <div id="datepicker1">
-                  <Datepicker placeholder="Fecha" class="form-control" :first-day-of-week="1" lang="en" confirm>
-                  </Datepicker>
+                  <!-- <Datepicker placeholder="Fecha" class="form-control" :first-day-of-week="1" lang="en" confirm>
+                  </Datepicker> -->
+                  <input type="date" class="form-control">
                 </div>
               </div>
               <div class="col-xxl-2 col-lg-4">
@@ -148,8 +149,8 @@ export default {
                     <!-- <td>0-2 Years</td> -->
                     <!-- <td>2</td> -->
                     <!-- <td><span class="badge badge-soft-success">Indeterminado</span></td> -->
-                    <td>{{ list.regimen }}</td>
-                    <td>{{ list.vinculo }}</td>
+                    <td><small>{{ list.regimen }}</small></td>
+                    <td><small>{{ list.vinculo }}</small></td>
                     <!-- <td>25 June 2021</td> -->
                     <td v-if="list.sexo=='MA'"><span class="me-1 badge bg-primary rounded-pill">Masculino</span></td>
                     <td v-else><span class="me-1 badge bg-danger rounded-pill">Femenino</span></td>
@@ -172,10 +173,7 @@ export default {
                         <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Edit">
                           <a href="#" class="btn btn-sm btn-soft-danger" title="Permisos y licencias"><i class="mdi mdi-account-heart"></i></a>
                         </li>
-                        <!-- <li data-bs-toggle="tooltip" data-bs-placement="top" aria-label="Delete">
-                        <b-button variant="soft-danger" class="btn-sm" @click="listDeleteModal = !listDeleteModal"><i
-                              class="mdi mdi-delete-outline"></i></b-button>
-                        </li> -->
+
                       </ul>
                     </td>
                   </tr>
@@ -185,31 +183,14 @@ export default {
               <!-- end table -->
             </div>
             <div class="row justify-content-between align-items-center">
-              <div class="col-auto me-auto">
-                <p class="text-muted mb-0">Showing <b>1</b> to <b>12</b> of <b>45</b> entries</p>
-              </div>
+                <div class="col-auto me-auto">
+                            <p class="text-muted mb-0">Mostrando <b>{{ empleados.from }}</b> a <b>{{ empleados.to }}</b> de <b>{{ empleados.last_page }}</b> datos</p>
+                        </div>
               <div class="col-auto">
                 <div class="card d-inline-block ms-auto mb-0">
                   <div class="card-body p-2">
-                    <nav aria-label="Page navigation example" class="mb-0">
-                      <ul class="pagination mb-0">
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:void(0);" aria-label="Previous">
-                            <span aria-hidden="true">«</span>
-                          </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-                        <li class="page-item active"><a class="page-link" href="javascript:void(0);">2</a></li>
-                        <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
-                        <li class="page-item"><a class="page-link" href="javascript:void(0);">...</a></li>
-                        <li class="page-item"><a class="page-link" href="javascript:void(0);">12</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="javascript:void(0);" aria-label="Next">
-                            <span aria-hidden="true">»</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
+                    <paginate :page-count="empleados.last_page" :page-range="3" :margin-pages="2" :click-handler="Buscarusuarios" :prev-text="'<<'" :next-text="'>>'" :container-class="'pagination mb-0'" :page-class="'page-item'"></paginate>
+
                   </div>
                 </div>
               </div>
