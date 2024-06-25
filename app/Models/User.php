@@ -33,7 +33,7 @@ class User extends Authenticatable implements JWTSubject
     //     'remember_token',
     // ];
     protected $hidden = [
-        'adm_password',
+        'password',
         'remember_token',
     ];
 
@@ -57,20 +57,22 @@ class User extends Authenticatable implements JWTSubject
 
     public function getAuthPassword()
     {
-        return $this->adm_password;
+        return $this->password;
+        // return $this->adm_password;
     }
     public function dependencia()
     {
         return $this->belongsTo(Dependencia::class, 'depe_id','iddependencia')->select('iddependencia','depe_nombre','depe_depende');
     }
-
-    public function getJWTIdentifier()
-    {
+    public function getJWTIdentifier() {
         return $this->getKey();
     }
-
-    public function getJWTCustomClaims()
-    {
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims() {
         return [];
     }
 }
