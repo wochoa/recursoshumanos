@@ -10,8 +10,8 @@ export default {
             logoDark,
             logoLight,
             auth: {
-                adm_email: "WOCHOA2",
-                password: "carina123"
+                adm_email: "",
+                password: ""
             },
             processing: false,
             authError: null,
