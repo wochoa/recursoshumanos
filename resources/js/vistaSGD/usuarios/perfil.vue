@@ -7,7 +7,7 @@ import Stat from "../../components/widgets/stat.vue";
 
 import MarcacionesPersonal from "../calendario/MarcacionesPersonal.vue";
 import MarcacionesPersonalcalendario from '../calendario/MarcacionesPersonalcalendario.vue';
-import inforpersonalresumen from '../usuarios/infopersonalresumen.vue';
+import inforpersonalresumen from './Infoperresumen.vue';
 import axios from 'axios';
 /**
  * Contacts-Profile component
