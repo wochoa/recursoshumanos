@@ -9,22 +9,11 @@ export default {
     },
     data() {
         return {
-
+            datos:null
         };
     },
-    // computed: {
-    //     datosdeluser() {
-    //         return this.$store.state.auth.user.user;
-    //     }
-    // }
-    methods:{
-        honomastico(fecha)
-        {
-            var datos=fecha.trim();//.substr(-5,5);
-            console.log(fecha);
-            // return datos;
-        }
-    }
+
+
 };
 </script>
 

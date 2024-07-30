@@ -27,7 +27,7 @@
                 return response()->json($validator->errors(), 422);
             }
             if (! $token = auth()->attempt($validator->validated())) {
-                return response()->json(['error' => 'usuario no autorizado'], 401);
+                return response()->json(['error' => 'Usuario no autorizado'], 401);
             }
             return $this->createNewToken($token);
         }
@@ -39,8 +39,8 @@
         public function register(Request $request)
         {
             $validator = Validator::make($request->all(), [
-                'name' => 'required|string|between:2,100',
-                'email' => 'required|string|max:100|unique:users',
+                'adm_name' => 'required|string|between:2,100',
+                'adm_email' => 'required|string|max:100|unique:users',
                 'password' => 'required|string|confirmed|min:6',
             ]);
             if($validator->fails()){
@@ -63,8 +63,14 @@
          */
         public function logout()
         {
-            auth()->logout();
-            return response()->json(['message' => 'El usuario cerró sesión correctamente']);
+            // auth()->logout();
+            // return response()->json(['message' => 'El usuario cerró sesión correctamente']);
+            auth()->user()->tokens()->delete();
+            return response()->json([
+                'status' => true,
+                'message' => 'User logged out successfully'
+            ],200);
+
         }
         /**
          * Refresh a token.

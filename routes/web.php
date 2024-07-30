@@ -10,6 +10,9 @@ use App\Http\Controllers\Usuarios as Usuarios;
 use App\Http\Controllers\AsistenciasController;
 use App\Http\Controllers\EscalafonController;
 
+use App\Http\Controllers\Firmaperu;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +57,9 @@ Route::get('listasistenciaxdni',[AsistenciasController::class, 'listasistenciaxd
 route::get('empleados',[EscalafonController::class,'index'])->name('empleados.index');
 route::get('resuempleado',[EscalafonController::class,'resumen'])->name('empleados.resumen');
 route::get('empleadoxdni',[EscalafonController::class,'empleadoxdni'])->name('empleados.empleadoxdni');
+
+// firmaperu
+route::post('firmaperu/parametros',[Firmaperu::class,'parametros'])->name('firmaperu.parametros');
 
 
 
