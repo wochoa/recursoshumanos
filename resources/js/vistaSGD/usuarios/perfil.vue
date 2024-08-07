@@ -8,6 +8,9 @@ import Stat from "../../components/widgets/stat.vue";
 import MarcacionesPersonal from "../calendario/MarcacionesPersonal.vue";
 import MarcacionesPersonalcalendario from '../calendario/MarcacionesPersonalcalendario.vue';
 import Infoperresumen from './Infoperresumen.vue';
+
+import InfoResumenPers from '../usuarios/InfoResumenPers.vue';
+
 import axios from 'axios';
 /**
  * Contacts-Profile component
@@ -20,7 +23,10 @@ export default {
         Profile,
         MarcacionesPersonal,
         MarcacionesPersonalcalendario,
-        Infoperresumen
+
+        Infoperresumen,
+        InfoResumenPers
+
     },
     data() {
         return {

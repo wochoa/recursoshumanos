@@ -105,6 +105,20 @@ return [
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
+        'marcacion' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL_marcacion'),
+            'host' => env('DB_HOST_marcacion', '127.0.0.1'),
+            'port' => env('DB_PORT_marcacion', '5432'),
+            'database' => env('DB_DATABASE_marcacion', 'forge'),
+            'username' => env('DB_USERNAME_marcacion', 'forge'),
+            'password' => env('DB_PASSWORD_marcacion', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

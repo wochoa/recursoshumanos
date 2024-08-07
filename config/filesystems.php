@@ -41,6 +41,10 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+        'tramite' => [
+            'driver' => 'local',
+            'root' => storage_path('tramite'),
+        ],
 
         's3' => [
             'driver' => 's3',

@@ -10,6 +10,10 @@ use App\Http\Controllers\Usuarios as Usuarios;
 use App\Http\Controllers\AsistenciasController;
 use App\Http\Controllers\EscalafonController;
 
+use App\Http\Controllers\Firmaperu;
+use App\Http\Controllers\BiotimeController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +59,16 @@ route::get('empleados',[EscalafonController::class,'index'])->name('empleados.in
 route::get('resuempleado',[EscalafonController::class,'resumen'])->name('empleados.resumen');
 route::get('empleadoxdni',[EscalafonController::class,'empleadoxdni'])->name('empleados.empleadoxdni');
 
+// firmaperu
+route::post('firmaperu/parametros',[Firmaperu::class,'parametros'])->name('firmaperu.parametros');
+route::get('firmaperu/archivpdf/{idFile?}/{idDocumento?}',[Firmaperu::class,'printPdfR'])->name('firmaperu.printPdfFirma');
+route::post('firmaperu/upload',[Firmaperu::class,'upload'])->name('firmaperu.upload');
+
+// biotime
+route::get('biotime/marcaciones',[BiotimeController::class,'index'])->name('biotime.index');
+route::get('biotime/marcacionxdni',[BiotimeController::class,'marcacion'])->name('biotime.marcacion');
 
 
-Route::get('/{any?}', [HomeController::class, 'show'])->where('any', '^(?!api\/)[\/\w\.-]*');
+
+// Route::get('/{any?}', [HomeController::class, 'show'])->where('any', '^(?!api\/)[\/\w\.-]*');
+Route::get('/', [HomeController::class, 'index']);
