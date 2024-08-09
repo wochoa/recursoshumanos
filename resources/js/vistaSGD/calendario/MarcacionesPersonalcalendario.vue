@@ -75,7 +75,8 @@ export default {
     },
     methods: {
         consultadni() {
-            var url = '/asistenciaxdni'
+            // var url = '/asistenciaxdni'
+            var url = '/biotime/marcacionxdni'
             const params = {
                 dni: this.dni
             }

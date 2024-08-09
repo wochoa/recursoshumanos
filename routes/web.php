@@ -70,5 +70,5 @@ route::get('biotime/marcacionxdni',[BiotimeController::class,'marcacion'])->name
 
 
 
-// Route::get('/{any?}', [HomeController::class, 'show'])->where('any', '^(?!api\/)[\/\w\.-]*');
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/{any?}', [HomeController::class, 'show'])->where('any', '^(?!api\/)[\/\w\.-]*');
+// Route::get('/', [HomeController::class, 'index']);

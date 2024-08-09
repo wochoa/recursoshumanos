@@ -24,7 +24,7 @@ class BiotimeController extends Controller
         $datos=DB::connection('marcacion')->table('iclock_transaction')->where('emp_code',$dni)->get();
         $i=0;
 
-        $diapuntual=0;
+            $diapuntual=0;
             $diastarde=0;
             $faltadiacompleto=0;
             $faltafaltamediodia=0;
