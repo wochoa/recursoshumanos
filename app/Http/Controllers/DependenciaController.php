@@ -9,6 +9,16 @@ class DependenciaController extends Controller
 {
 
 
+    public function usuariosdepe($dni)
+     {
+         $datos=user::with('dependencia')->where('adm_dni',$dni)->get();
+         return $datos;
+     }
+     public function listausuarios()
+     {
+         $datos=user::with('dependencia')->get();
+         return $datos;
+     }
 
 
     public function index()
