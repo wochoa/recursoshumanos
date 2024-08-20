@@ -17,7 +17,7 @@ class CreateAdminTable extends Migration {
 			$table->string('adm_lastname');
 			$table->string('adm_inicial')->nullable();
 			$table->string('adm_email')->nullable();
-			$table->string('adm_password')->nullable();
+			$table->string('password')->nullable();
 			$table->integer('adm_estado')->nullable();
 			$table->string('adm_cargo')->nullable();
 			$table->string('adm_correo')->nullable();

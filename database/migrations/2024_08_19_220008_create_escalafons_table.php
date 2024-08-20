@@ -31,7 +31,8 @@ return new class extends Migration
             $table->string('cargocontrato');
             $table->string('cargoactual');
             $table->string('direccion');
-            $table->integer('regimen');//tiporegimen
+            $table->string('regimen');//tiporegimen
+            $table->integer('regimen_id')->nullable();;//tiporegimen
             $table->integer('oficina_id')->nullable();//id de oficina
             $table->integer('depe_id')->nullable();//id depe
             $table->timestamps();

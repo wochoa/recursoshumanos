@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Escalafon;
+// use App\Models\User;
 
 class EscalafonController extends Controller
 {
@@ -12,7 +14,8 @@ class EscalafonController extends Controller
      */
     public function index()
     {
-        $datos=DB::connection('escalafon')->table('empleados')->orderBy('apellidos','desc')->paginate(10);
+        // $datos=DB::connection('escalafon')->table('empleados')->orderBy('apellidos','desc')->paginate(10);
+        $datos=Escalafon::with('dependencia')->orderBy('apellidos','desc')->paginate(10);
         return $datos;
     }
 
@@ -20,7 +23,8 @@ class EscalafonController extends Controller
     {
         // $data=$request->all();
 
-        $datos=DB::connection('escalafon')->table('empleados')->where('dni',$request->dni)->get();
+        // $datos=DB::connection('escalafon')->table('empleados')->where('dni',$request->dni)->get();
+        $datos=Escalafon::with('dependencia')->where('dni',$request->dni)->get();
         return $datos;
     }
 
@@ -29,17 +33,17 @@ class EscalafonController extends Controller
      */
     public function resumen()
     {
-        $masculinos=DB::connection('escalafon')->table('empleados')->where('sexo','MA')->count();
-        $femenino=DB::connection('escalafon')->table('empleados')->where('sexo','FE')->count();
-        $casindeterminado=DB::connection('escalafon')->table('empleados')->where('regimen','CAS indeterminado')->count();
-        $nombrado=DB::connection('escalafon')->table('empleados')->where('regimen','276 nombrado')->count();
-        $temporal=DB::connection('escalafon')->table('empleados')->where('regimen','CAS temporal')->count();
-        $directivo=DB::connection('escalafon')->table('empleados')->where('regimen','CAS directivo')->count();
-        $medidacautelar=DB::connection('escalafon')->table('empleados')->where('regimen','CAS medida cautelar')->count();
-        $mandatojudicial=DB::connection('escalafon')->table('empleados')->where('regimen','276 mandato judicial')->count();
-        $cassuplencia=DB::connection('escalafon')->table('empleados')->where('regimen','CAS suplencia')->count();
-        $designado276=DB::connection('escalafon')->table('empleados')->where('regimen','276 designado')->count();
-        $total=DB::connection('escalafon')->table('empleados')->count();
+        $masculinos=Escalafon::where('sexo','MA')->count();
+        $femenino=Escalafon::where('sexo','FE')->count();
+        $casindeterminado=Escalafon::where('regimen','CAS indeterminado')->count();
+        $nombrado=Escalafon::where('regimen','276 nombrado')->count();
+        $temporal=Escalafon::where('regimen','CAS temporal')->count();
+        $directivo=Escalafon::where('regimen','CAS directivo')->count();
+        $medidacautelar=Escalafon::where('regimen','CAS medida cautelar')->count();
+        $mandatojudicial=Escalafon::where('regimen','276 mandato judicial')->count();
+        $cassuplencia=Escalafon::where('regimen','CAS suplencia')->count();
+        $designado276=Escalafon::where('regimen','276 designado')->count();
+        $total=Escalafon::count();
 
         $datos=array('masculinos'=>$masculinos,
         'femenino'=>$femenino,
