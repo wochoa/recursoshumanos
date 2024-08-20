@@ -150,7 +150,7 @@ export default {
 
         <div class="col-xl-9">
 
-            <MarcacionesPersonalcalendario :dni="datosdeluser.adm_dni" />
+            <!-- <MarcacionesPersonalcalendario :dni="datosdeluser.adm_dni" /> -->
             <MarcacionesPersonal :dni="datosdeluser.adm_dni" />
 
         </div>

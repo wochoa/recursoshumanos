@@ -15,8 +15,10 @@ class AsistenciasController extends Controller
     public function index(Request $request)
     {
         // $datos=$request->all();
-        $fechaini= date("d-m-Y", strtotime($request->fechaini));
-        $fechafin= date("d-m-Y", strtotime($request->fechafin));
+        // $fechaini= date("d-m-Y", strtotime($request->fechaini));
+        $fechaini= date("Y-m-d", strtotime($request->fechaini));
+        // $fechafin= date("d-m-Y", strtotime($request->fechafin));
+        $fechafin= date("Y-m-d", strtotime($request->fechafin));
         $where=[];
         if ($request->dni <> '')
             $where[] = ['dni', $request->dni];
