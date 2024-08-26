@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Escalafon;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+// use Storage;
+use Illuminate\Support\Facades\Storage;
+use Cache;
 // use App\Models\User;
 
 class EscalafonController extends Controller
@@ -12,6 +18,7 @@ class EscalafonController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         // $datos=DB::connection('escalafon')->table('empleados')->orderBy('apellidos','desc')->paginate(10);
@@ -59,6 +66,102 @@ class EscalafonController extends Controller
     );
 
         return response()->json($datos , 200);
+    }
+
+    // TRASLADAR DATOS DE CONVOCATORIA A LEGAJO
+    /*
+        SE TIENE QUE COMPARAR DATOS DE MARCACION Y CONVOCATORIA INICIANDOSE DESDE 02/07/2024
+        FECHAS ANTIGUAS NO ESTARN REGISTRADAS EN EL RELOJ DEBIDO A QUE MUCHOS YA NO LABORAN
+        LOS DATOS SE TOMARAN CON TRABAJADORES VIGENTES Y REGISTRADOS EN EL RELOJ 02/07/2024
+    */
+    public function buscadistrito($id)
+    {
+        $datos=DB::connection('cas')->table('lugar')->where('id',$id)->get();
+        return $datos;
+    }
+
+    public function leerjson()
+    {
+
+        if($this->sincronizar()){
+            $path=storage_path('app/cas.json');
+            $json = json_decode(file_get_contents($path), true);
+
+            return $json;
+        }
+
+    }
+    public function verpostulante($idenvio)
+    {
+        $datos=DB::connection('cas')->table('user_puesto')->join('lugar','user_puesto.dis','=','lugar.id')->where('idenvioinsc',$idenvio)->get();
+        return $datos;
+    }
+    public function sincronizar()
+    {
+        //86400 minutos comprenden 24 horas Laravel
+        return  Cache::remember('token_convocatoria', 86400, function ()
+        {
+
+            $datos_reloj=DB::connection('marcacion')->table('personnel_employee')->select('emp_code')->groupBy('emp_code')->get();//where('emp_code',$dni)->get();
+            $esacalafon=$this->datosescalafon();
+
+            foreach($datos_reloj as $relog)
+            {
+                $reg[]=$relog->emp_code;
+            }
+
+            foreach($esacalafon as $escala)
+            {
+                $esc[]=$escala->dni;
+            }
+
+            $dni_faltantes=array_diff($reg,$esc);// aqui busca los dnis que no estan en escalafon
+
+            // return $this->buscarenconvocatoria($dni_faltantes);
+
+            $resultado=$this->buscarenconvocatoria($dni_faltantes);
+
+            $file = Storage::put( 'cas.json', json_encode($resultado));
+
+            // $rutaphp=storage_path('app/cas.json');
+
+            //         $rutapublicadephp = public_path("js/").'cas.json';
+            //         copy($rutaphp,$rutapublicadephp);
+
+            //         unlink($rutaphp);//eliminamos del storage luego de copiar
+
+
+            // $this->sincronizar();
+            return base64_encode('procesoconvocatoria');
+        });
+
+
+        // return $resultado;
+
+    }
+
+    public function datosescalafon(){
+        $datos=Escalafon::select('dni')->get();
+        return $datos;
+    }
+
+    public function buscarenconvocatoria($relog)
+    {
+        foreach($relog as $item)
+        {
+            $datos=DB::connection('cas')->table('user_puesto')
+            // ->join('lugar','user_puesto.dis','=','lugar.id')
+
+            ->where('num_doc',$item)->orderBy('idenvioinsc','DESC')->limit(1)->get();//$item;
+
+            if($datos->count())
+            {
+                $dni[]=$datos;//array('datos'=>$datos);
+            }
+            // $dni[]=$item;
+        }
+        // $dni=DB::connection('cas')->table('envioinscripcion')->join('user_conv_detalle','envioinscripcion.iduser','=','user_conv_detalle.iduser')->where('num_doc',42282733)->orderBy('idenvioinsc','DESC')->limit(1)->get();//$item;
+        return $dni;
     }
 
     /**

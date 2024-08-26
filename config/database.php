@@ -120,6 +120,26 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'cas' => [
+            'driver' => 'mysql',
+            'url' => env('DATABASE_URL_cas'),
+            'host' => env('DB_HOST_cas', '127.0.0.1'),
+            'port' => env('DB_PORT_cas', '3306'),
+            'database' => env('DB_DATABASE_cas', 'forge'),
+            'username' => env('DB_USERNAME_cas', 'forge'),
+            'password' => env('DB_PASSWORD_cas', ''),
+            'unix_socket' => env('DB_SOCKET_cas', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
