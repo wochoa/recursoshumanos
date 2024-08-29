@@ -30,6 +30,7 @@ use App\Http\Controllers\BiotimeController;
 
 // Route::get('datosuser/{dni}', [Dependencia::class, 'usuariosdepe']);
 // Route::get('listausuarios', [Dependencia::class, 'listausuarios']);
+Route::get('dependencia', [Dependencia::class, 'index']);
 
 // ROLES Y PERMISOS
 Route::get('rolesypermisos', [Rolesypermisos::class,'index'])->name('Rolesypermisos');
@@ -44,6 +45,7 @@ Route::post('agregarperdelrol', [Rolesypermisos::class,'agregarperdelrol'])->nam
 // Route::get('/usuarios/all',[Usuarios::class,'index'])->name('usuarios.all');
 Route::get('datosuser/{dni}', [Usuarios::class, 'usuariosdepe']);
 Route::get('listausuarios', [Usuarios::class, 'listausuarios']);
+
 
 
 // CONSUMO DE DATOS PERSONALES CON FECHA DE NACIMIENTO Y REGIMEN
@@ -62,6 +64,8 @@ route::get('sincronizar',[EscalafonController::class,'sincronizar'])->name('empl
 route::get('leerjson',[EscalafonController::class,'leerjson'])->name('empleados.leerjson');
 route::get('buscadistrito/{id}',[EscalafonController::class,'buscadistrito'])->name('empleados.buscadistrito');
 route::get('verpostulante/{idenvio}',[EscalafonController::class,'verpostulante'])->name('empleados.verpostulante');
+route::get('regimenpersonal',[EscalafonController::class,'regimenpersonal'])->name('empleados.regimenpersonal');
+route::post('escalafon/addescalafon',[EscalafonController::class,'addescalafon'])->name('empleados.addescalafon');
 
 // firmaperu
 route::post('firmaperu/parametros',[Firmaperu::class,'parametros'])->name('firmaperu.parametros');

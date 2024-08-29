@@ -13,26 +13,26 @@ return new class extends Migration
     {
         Schema::create('escalafon', function (Blueprint $table) {
             $table->id('idescalafon');
-            $table->string('nombres');
-            $table->string('apellidos');
-            $table->string('dni');
-            $table->string('ruc');
-            $table->string('sexo');
-            $table->date('nacimiento');//fecha nacimiento
-            $table->date('vinculo');//fecha vinculo
-            $table->string('celular');
-            $table->string('nacionalidad');
-            $table->string('departamento');
-            $table->string('provincia');
-            $table->string('distrito');
-            $table->string('estadocivil');
-            $table->string('correo');
-            $table->string('correoinst');
-            $table->string('cargocontrato');
-            $table->string('cargoactual');
-            $table->string('direccion');
-            $table->string('regimen');//tiporegimen
-            $table->integer('regimen_id')->nullable();;//tiporegimen
+            $table->string('nombres')->nullable();
+            $table->string('apellidos')->nullable();
+            $table->string('dni')->nullable();
+            $table->string('ruc')->nullable();
+            $table->string('sexo')->nullable();
+            $table->date('nacimiento')->nullable();//fecha nacimiento
+            $table->date('vinculo')->nullable();//fecha vinculo
+            $table->string('celular')->nullable();
+            $table->string('nacionalidad')->nullable();
+            $table->string('departamento')->nullable();
+            $table->string('provincia')->nullable();
+            $table->string('distrito')->nullable();
+            $table->string('estadocivil')->nullable();
+            $table->string('correo')->nullable();
+            $table->string('correoinst')->nullable();
+            $table->string('cargocontrato')->nullable();
+            $table->string('cargoactual')->nullable();
+            $table->string('direccion')->nullable();
+            $table->string('regimen')->nullable();//tiporegimen
+            $table->integer('regimen_id')->nullable();//tiporegimen
             $table->integer('oficina_id')->nullable();//id de oficina
             $table->integer('depe_id')->nullable();//id depe
             $table->timestamps();

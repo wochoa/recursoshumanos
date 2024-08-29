@@ -35,6 +35,12 @@ class EscalafonController extends Controller
         return $datos;
     }
 
+    public function regimenpersonal()
+    {
+        $datos=DB::table('regimen')->get();
+        return $datos;
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -152,9 +158,9 @@ class EscalafonController extends Controller
             $datos=DB::connection('cas')->table('user_puesto')
             // ->join('lugar','user_puesto.dis','=','lugar.id')
 
-            ->where('num_doc',$item)->orderBy('idenvioinsc','DESC')->limit(1)->get();//$item;
+            ->where('num_doc',$item)->orderBy('idenvioinsc','DESC')->first();//$item;
 
-            if($datos->count())
+            if($datos)
             {
                 $dni[]=$datos;//array('datos'=>$datos);
             }
@@ -167,9 +173,16 @@ class EscalafonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function addescalafon(Request $request)
     {
+        $datos=$request->all();
+        $add=new Escalafon();
+        $add->fill($datos);
+        $add->save();
 
+        // $this->sincronizar();
+
+        return $add;
     }
 
     /**
