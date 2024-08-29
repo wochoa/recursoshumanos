@@ -39,6 +39,7 @@ class BiotimeController extends Controller
             $minuto=substr($compara,14,2);// para controlar por minuto
 
             $marcacion='marcación';
+            $className='';
 
             switch(intval($hora))
             {
