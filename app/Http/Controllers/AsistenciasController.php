@@ -27,19 +27,19 @@ class AsistenciasController extends Controller
         {
             if(count($where)>0)
             {// cuando tiene elemenos where
-                $datos=DB::connection('asistencias')->table('marcaciones')->where($where)->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
             }
             else{
-                $datos=DB::connection('asistencias')->table('marcaciones')->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
             }
         }
         else{
             if(count($where)>0)
             {// cuando tiene elemenos where
-                $datos=DB::connection('asistencias')->table('marcaciones')->where($where)->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
             }
             else{
-                $datos=DB::connection('asistencias')->table('marcaciones')->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
             }
         }
 
@@ -51,13 +51,13 @@ class AsistenciasController extends Controller
      */
     public function listasistenciaxdni(Request $request)
     {   $dni=$request->dni;
-        $datos=DB::connection('asistencias')->table('marcaciones')->where('dni',$dni)->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
+        $datos=DB::connection('asistencias')->table('marcaciones_all')->where('dni',$dni)->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
         return $datos;
     }
     public function asistenciaxdni(Request $request)
     {
         $dni=$request->dni;
-        $datos=DB::connection('asistencias')->table('marcaciones')->where('dni',$dni)->orderBy('fecha','desc')->orderBy('hora','desc')->get();
+        $datos=DB::connection('asistencias')->table('marcaciones_all')->where('dni',$dni)->orderBy('fecha','desc')->orderBy('hora','desc')->get();
         // $arrayName = array();
         $i=0;
         foreach ($datos as $data) {
