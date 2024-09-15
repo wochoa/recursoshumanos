@@ -23,6 +23,7 @@ return new class extends Migration
             $table->date('fecha')->nullable();
             $table->time('hora_salida')->nullable();
             $table->time('hora_retorno')->nullable();
+            $table->time('tiempo_excedido')->nullable(); // diferencia entre salida y retorno
             $table->text('archivo')->nullable();
             $table->timestamps();
         });

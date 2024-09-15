@@ -13,6 +13,8 @@ use App\Http\Controllers\EscalafonController;
 use App\Http\Controllers\Firmaperu;
 use App\Http\Controllers\BiotimeController;
 
+use App\Http\Controllers\PapeletaspermisosController as Permisos;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +68,11 @@ route::get('buscadistrito/{id}',[EscalafonController::class,'buscadistrito'])->n
 route::get('verpostulante/{idenvio}',[EscalafonController::class,'verpostulante'])->name('empleados.verpostulante');
 route::get('regimenpersonal',[EscalafonController::class,'regimenpersonal'])->name('empleados.regimenpersonal');
 route::post('escalafon/addescalafon',[EscalafonController::class,'addescalafon'])->name('empleados.addescalafon');
+
+// PAPELETAS DE SALIDAS
+route::get('permisos',[Permisos::class,'index'])->name('permisos.index');
+route::get('dni/{num}',[Permisos::class,'dni'])->name('permisos.dni');
+route::get('papeletassalidad/addpapaletas',[Permisos::class,'addpapaletas'])->name('permisos.addpapaletas');
 
 // firmaperu
 route::post('firmaperu/parametros',[Firmaperu::class,'parametros'])->name('firmaperu.parametros');
