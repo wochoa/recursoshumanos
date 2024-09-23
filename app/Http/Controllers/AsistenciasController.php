@@ -120,6 +120,8 @@ class AsistenciasController extends Controller
         $ma2=$horas[1]->hora;
         $ma3=$horas[2]->hora;
         $ma4=$horas[3]->hora;
+        $f_dc_m1=$horas[0]->f_dc_m1+$horas[1]->f_dc_m1+$horas[2]->f_dc_m1+$horas[3]->f_dc_m1;
+        $f_md_m3=$horas[0]->f_md_m3+$horas[1]->f_md_m3+$horas[2]->f_md_m3+$horas[3]->f_md_m3;
         $just=$horas[0]->just;
         $doc_just=$horas[0]->doc_just;
         $array=array(
@@ -132,7 +134,8 @@ class AsistenciasController extends Controller
             'ma2'=>$ma2,
             'ma3'=>$ma3,
             'ma4'=>$ma4,
-            'ma4'=>$ma4,
+            'f_dc_m1'=>$f_dc_m1,
+            'f_md_m3'=>$f_md_m3,
             'tot_min_ta'=>$tot_min_ta,
             'tot_min_ex'=>$tot_min_ex,
             'just'=>$just,
