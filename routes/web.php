@@ -55,6 +55,7 @@ Route::get('datospersonales', [Usuarios::class, 'datospersonales']);
 
 // REGISTRO DE ASISTENCIAS
 Route::get('asistencias',[AsistenciasController::class, 'index'])->name('asistencias');
+Route::get('reordenamarcacion',[AsistenciasController::class, 'reordenamarcacion'])->name('reordenamarcacion');
 Route::get('asistenciaxdni',[AsistenciasController::class, 'asistenciaxdni'])->name('asistenciaxdni');// para calendario
 Route::get('listasistenciaxdni',[AsistenciasController::class, 'listasistenciaxdni'])->name('listasistenciaxdni');// para tablas
 
@@ -72,7 +73,10 @@ route::post('escalafon/addescalafon',[EscalafonController::class,'addescalafon']
 // PAPELETAS DE SALIDAS
 route::get('permisos',[Permisos::class,'index'])->name('permisos.index');
 route::get('dni/{num}',[Permisos::class,'dni'])->name('permisos.dni');
-route::get('papeletassalidad/addpapaletas',[Permisos::class,'addpapaletas'])->name('permisos.addpapaletas');
+route::post('papeletassalidad/addpapaletas',[Permisos::class,'addpapaletas'])->name('permisos.addpapaletas');
+route::get('papeletassalidad/idpapeleta',[Permisos::class,'idpapeleta'])->name('permisos.idpapeleta');
+route::get('papeletassalidad/updretorno',[Permisos::class,'updretorno'])->name('permisos.updretorno');
+route::get('papeletassalidad/busqueda',[Permisos::class,'busqueda'])->name('permisos.busqueda');
 
 // firmaperu
 route::post('firmaperu/parametros',[Firmaperu::class,'parametros'])->name('firmaperu.parametros');

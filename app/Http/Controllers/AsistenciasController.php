@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
+//
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+
 class AsistenciasController extends Controller
 {
     /**
@@ -14,10 +19,8 @@ class AsistenciasController extends Controller
      */
     public function index(Request $request)
     {
-        // $datos=$request->all();
-        // $fechaini= date("d-m-Y", strtotime($request->fechaini));
+
         $fechaini= date("Y-m-d", strtotime($request->fechaini));
-        // $fechafin= date("d-m-Y", strtotime($request->fechafin));
         $fechafin= date("Y-m-d", strtotime($request->fechafin));
         $where=[];
         if ($request->dni <> '')
@@ -27,23 +30,115 @@ class AsistenciasController extends Controller
         {
             if(count($where)>0)
             {// cuando tiene elemenos where
-                $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
             }
             else{
-                $datos=DB::connection('asistencias')->table('marcaciones_all')->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
             }
         }
         else{
             if(count($where)>0)
             {// cuando tiene elemenos where
-                $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
             }
             else{
-                $datos=DB::connection('asistencias')->table('marcaciones_all')->orderBy('fecha','desc')->orderBy('hora','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
             }
         }
 
         return $datos;
+        // return $this->reordenamarcacion($datos);
+    }
+    public function paginate($items, $perPage = 10, $page = null, $options = [])
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
+
+    public function reordenamarcacion(Request $request)
+    {
+
+        $datos=DB::connection('asistencias')->table('marcaciones_all')->select('dni','fecha')->orderBy('dni','desc')->orderBy('fecha','desc')->groupBy('dni','fecha')->get();
+
+
+        $fechaini= date("Y-m-d", strtotime($request->fechaini));
+        $fechafin= date("Y-m-d", strtotime($request->fechafin));
+        $where=[];
+        if ($request->dni <> '')
+            $where[] = ['dni', $request->dni];
+
+        if($request->fechaini <> '' and $request->fechafin <> '')
+        {
+            if(count($where)>0)
+            {// cuando tiene elemenos where
+                // $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->whereBetween('fecha', [$fechaini, $fechafin])->select('dni','fecha')->orderBy('dni','desc')->orderBy('fecha','desc')->groupBy('dni','fecha')->get();
+            }
+            else{
+                // $datos=DB::connection('asistencias')->table('marcaciones_all')->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->whereBetween('fecha', [$fechaini, $fechafin])->select('dni','fecha')->orderBy('dni','desc')->orderBy('fecha','desc')->groupBy('dni','fecha')->get();
+            }
+        }
+        else{
+            if(count($where)>0)
+            {// cuando tiene elemenos where
+                // $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->select('dni','fecha')->orderBy('dni','desc')->orderBy('fecha','desc')->groupBy('dni','fecha')->get();
+            }
+            else{
+                // $datos=DB::connection('asistencias')->table('marcaciones_all')->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all')->select('dni','fecha')->orderBy('dni','desc')->orderBy('fecha','desc')->groupBy('dni','fecha')->paginate(10);
+            }
+        }
+
+        foreach($datos as $valor)
+        {
+            $horas[]=$this->extrae_horas($valor->dni,$valor->fecha);
+
+        }
+        // $vaob=json_decode($datos,true);
+        // print_r($vaob);
+
+        // // print_r($datos);
+
+        // // return json_decode($datos[0]->data);
+        return $this->paginate($horas);
+    }
+
+    public function extrae_horas($dni,$fecha)
+    {
+        $horas=$datos=DB::connection('asistencias')->table('marcaciones_all')->where(['dni'=>$dni,'fecha'=>$fecha])->orderBy('hora','asc')->get();
+        $id=$horas[0]->id;
+        $dni=$dni;
+        $nombres=$horas[0]->nombre_completo;
+        $dependencia=$horas[0]->dependencia;
+        $fecha=$fecha;
+        $tot_min_ta=$horas[0]->tot_min_ta;
+        $tot_min_ex=$horas[0]->tot_min_ex;
+        $ma1=$horas[0]->hora;
+        $ma2=$horas[1]->hora;
+        $ma3=$horas[2]->hora;
+        $ma4=$horas[3]->hora;
+        $just=$horas[0]->just;
+        $doc_just=$horas[0]->doc_just;
+        $array=array(
+            'id'=>$id,
+            'dni'=>$dni,
+            'nombres'=>$nombres,
+            'dependencia'=>$dependencia,
+            'fecha'=>$fecha,
+            'ma1'=>$ma1,
+            'ma2'=>$ma2,
+            'ma3'=>$ma3,
+            'ma4'=>$ma4,
+            'ma4'=>$ma4,
+            'tot_min_ta'=>$tot_min_ta,
+            'tot_min_ex'=>$tot_min_ex,
+            'just'=>$just,
+            'doc_just'=>$doc_just
+        );
+        return $array;
     }
 
     /**
@@ -74,6 +169,7 @@ class AsistenciasController extends Controller
             $minuto=substr($data->hora,3,2);// para controlar por minuto
 
             $marcacion='marcación';
+            // $className='bg-danger text-white';
             switch(intval($hora))
             {
                 case 7: $className='bg-success text-white'; $marcacion='Ingreso'; break;
@@ -88,7 +184,10 @@ class AsistenciasController extends Controller
                         $className='bg-danger text-white'; $marcacion='Desc.Todo el día';
                     }
                     break;
-
+                case 9: $className='bg-danger text-white'; $marcacion='Desc.Todo el día';break;
+                case 10: $className='bg-danger text-white'; $marcacion='Desc.Todo el día';break;
+                case 11: $className='bg-danger text-white'; $marcacion='Desc.Todo el día';break;
+                case 12: $className='bg-danger text-white'; $marcacion='Desc.Todo el día';break;
                 case 13: $className='bg-warning text-white'; $marcacion='Salida'; break;
                 case 14: $className='bg-success text-white'; $marcacion='Ingreso'; break;
                 case 15: if($minuto>=0 and $minuto<=11)

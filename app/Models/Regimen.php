@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Regimen extends Model
 {
     use HasFactory;
+    protected $table='regimen';
+    protected $primaryKey = 'idregimen';
 }

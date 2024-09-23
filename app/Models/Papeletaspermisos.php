@@ -11,4 +11,14 @@ class Papeletaspermisos extends Model
     protected $table='papeletaspermisos';
     protected $fillable = [
 		'dni', 'nombres', 'oficina', 'condicion_lab', 'motivo_salida', 'destino', 'justificacion', 'fecha', 'hora_salida', 'hora_retorno', 'archivo','tiempo_excedido'];
+
+        public function dependencia()
+        {
+            return $this->belongsTo(Dependencia::class, 'oficina','iddependencia')->select('iddependencia','depe_nombre','depe_depende');
+        }
+
+        public function regimen()
+        {
+            return $this->belongsTo(Regimen::class, 'condicion_lab','idregimen')->select('idregimen','nom_regimen');
+        }
 }

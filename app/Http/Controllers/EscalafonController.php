@@ -8,6 +8,7 @@ use App\Models\Escalafon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 // use Storage;
 use Illuminate\Support\Facades\Storage;
 use Cache;
@@ -32,7 +33,19 @@ class EscalafonController extends Controller
 
         // $datos=DB::connection('escalafon')->table('empleados')->where('dni',$request->dni)->get();
         $datos=Escalafon::with('dependencia')->where('dni',$request->dni)->get();
-        return $datos;
+
+        if(!$datos->count())
+        {
+            $response = Http::get(route('permisos.dni',['num'=>$request->dni]));
+
+        return response()->json(['status'=>1,'datos'=>$response->json()]);
+        }
+        else{
+            $datos=Escalafon::with('dependencia')->where('dni',$request->dni)->first();
+            return response()->json(['status'=>2,'datos'=>$datos]);
+        }
+
+
     }
 
     public function regimenpersonal()
