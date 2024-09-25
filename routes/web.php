@@ -87,6 +87,10 @@ route::post('firmaperu/upload',[Firmaperu::class,'upload'])->name('firmaperu.upl
 route::get('biotime/marcaciones',[BiotimeController::class,'index'])->name('biotime.index');
 route::get('biotime/marcacionxdni',[BiotimeController::class,'marcacion'])->name('biotime.marcacion');
 
+// administracion de usuarios
+// Route::post('agregarperdelrol', [Rolesypermisos::class,'agregarperdelrol'])->name('agregarperdelrol');
+route::get('administracion/usuarios/getListarPermisoByUsuario', [Rolesypermisos::class,'getListarPermisoByUsuario'])->name('getListarPermisoByUsuario');
+
 
 
 Route::get('/{any?}', [HomeController::class, 'show'])->where('any', '^(?!api\/)[\/\w\.-]*');
