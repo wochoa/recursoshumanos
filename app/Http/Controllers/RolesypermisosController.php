@@ -23,15 +23,6 @@ class RolesypermisosController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getListarPermisoByUsuario(Request $request)
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -104,6 +95,18 @@ class RolesypermisosController extends Controller
             ['role_id' => $request->idrol,
             'permission_id' => $request->idpermiso]
         );
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getListarPermisoByUsuario(Request $request)
+    {
+        $id=$request->Userid;
+        $permisos=DB::table('permisosuser')->select('name')->where('model_id',$id)->get();
+        return $permisos;
     }
 
     /**

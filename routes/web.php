@@ -42,6 +42,10 @@ Route::get('verpermisos/{idrol}', [Rolesypermisos::class,'verpermisos'])->name('
 Route::post('quitarperdelrol', [Rolesypermisos::class,'quitarperdelrol'])->name('quitarperdelrol');
 Route::post('agregarperdelrol', [Rolesypermisos::class,'agregarperdelrol'])->name('agregarperdelrol');
 
+// administracion de usuarios
+// Route::post('agregarperdelrol', [Rolesypermisos::class,'agregarperdelrol'])->name('agregarperdelrol');
+route::post('administracion/usuarios/getListarPermisoByUsuario', [Rolesypermisos::class,'getListarPermisoByUsuario'])->name('getListarPermisoByUsuario');
+
 // USUARIOS
 
 // Route::get('/usuarios/all',[Usuarios::class,'index'])->name('usuarios.all');
@@ -87,9 +91,7 @@ route::post('firmaperu/upload',[Firmaperu::class,'upload'])->name('firmaperu.upl
 route::get('biotime/marcaciones',[BiotimeController::class,'index'])->name('biotime.index');
 route::get('biotime/marcacionxdni',[BiotimeController::class,'marcacion'])->name('biotime.marcacion');
 
-// administracion de usuarios
-// Route::post('agregarperdelrol', [Rolesypermisos::class,'agregarperdelrol'])->name('agregarperdelrol');
-route::get('administracion/usuarios/getListarPermisoByUsuario', [Rolesypermisos::class,'getListarPermisoByUsuario'])->name('getListarPermisoByUsuario');
+
 
 
 

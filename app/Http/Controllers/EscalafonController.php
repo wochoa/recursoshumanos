@@ -122,35 +122,30 @@ class EscalafonController extends Controller
         {
 
             $datos_reloj=DB::connection('marcacion')->table('personnel_employee')->select('emp_code')->groupBy('emp_code')->get();//where('emp_code',$dni)->get();
-            $esacalafon=$this->datosescalafon();
+
 
             foreach($datos_reloj as $relog)
             {
                 $reg[]=$relog->emp_code;
             }
+            // PARA NO DUPLICAR DATOS EN ESCALAFON, pero no estaba comtemplado doble contrato de un personal en escalafon, lo cual deberia registrarse
+            // $esacalafon=$this->datosescalafon();
+            // foreach($esacalafon as $escala)
+            // {
+            //     $esc[]=$escala->dni;
+            // }
 
-            foreach($esacalafon as $escala)
-            {
-                $esc[]=$escala->dni;
-            }
 
-            $dni_faltantes=array_diff($reg,$esc);// aqui busca los dnis que no estan en escalafon
+            // $dni_faltantes=array_diff($reg,$esc);// aqui busca los dnis que no estan en escalafon, devuelve los DNI en array
+            // $resultado=$this->buscarenconvocatoria($dni_faltantes);
+            // esta consulta solo agarra a reloj y convocatoria
 
-            // return $this->buscarenconvocatoria($dni_faltantes);
+            $resultado=$this->buscarenconvocatoria($reg);
 
-            $resultado=$this->buscarenconvocatoria($dni_faltantes);
 
             $file = Storage::put( 'cas.json', json_encode($resultado));
 
-            // $rutaphp=storage_path('app/cas.json');
 
-            //         $rutapublicadephp = public_path("js/").'cas.json';
-            //         copy($rutaphp,$rutapublicadephp);
-
-            //         unlink($rutaphp);//eliminamos del storage luego de copiar
-
-
-            // $this->sincronizar();
             return base64_encode('procesoconvocatoria');
         });
 

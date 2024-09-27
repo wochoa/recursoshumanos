@@ -16,7 +16,7 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        // create permissions
+        // Para administrar gore digital
         Permission::create(['name' => 'Pagina_crearticket']);// pagina ticket
         Permission::create(['name' => 'Pagina_misticket']);// pagina mis ticket
         Permission::create(['name' => 'Pagina_reporteticket']);// pagina reporte ticket
@@ -50,7 +50,31 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['name' => 'inventario_crear']);
         Permission::create(['name' => 'inventario_editar']);
         Permission::create(['name' => 'inventario_eliminar']);
+        Permission::create(['name' => 'pagina_pide']);
 
+        // RECURSOS HUMANOS
+        Permission::create(['name' => 'menurecursos_humanos']);// para el menu de recursos humanos
+        Permission::create(['name' => 'empleados_index']);// listade emepleados
+        Permission::create(['name' => 'asistencias_index']);// listade emepleados
+        Permission::create(['name' => 'movimiento_index']);// listade emepleados
+        Permission::create(['name' => 'permisos_index']);// listade emepleados
+        Permission::create(['name' => 'licencias_index']);// listade emepleados
+        Permission::create(['name' => 'vacaciones_index']);// listade emepleados
+        Permission::create(['name' => 'honomastico_index']);// listade emepleados
+        Permission::create(['name' => 'boletas_index']);// listade emepleados
+        Permission::create(['name' => 'certificadotrabajo_index']);// listade emepleados
+        // dashboard
+        Permission::create(['name' => 'menu_dashboard']);//
+        Permission::create(['name' => 'dash_general_index']);// dashboard asistencias
+        Permission::create(['name' => 'dash_asistencias_index']);// dashboard asistencias
+        Permission::create(['name' => 'dash_vacaciones_index']);// dashboard vacaciones
+        Permission::create(['name' => 'dash_escalafon_index']);// dashboard escalafon
+        Permission::create(['name' => 'dash_usuarios_index']);// dashboard usuarios
+
+        // EVALUACION CAS
+        Permission::create(['name' => 'menu_evaluacioncas']);//
+        Permission::create(['name' => 'menu_administracion']);//
+        //para administrar GESTION PORTALES
         Permission::create(['name' => 'acceso_gestionportales']);
         Permission::create(['name' => 'gp_menu_portalweb']);
         Permission::create(['name' => 'gp_configuracion_tema']);
@@ -92,11 +116,11 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['name' => 'pg_menu_registrovisitas']);
         Permission::create(['name' => 'pg_registrovisitas_leer']);
         Permission::create(['name' => 'pg_registrovisitas_reporte']);
-        Permission::create(['name' => 'pagina_pide']);
         Permission::create(['name' => 'gp_slider_leer']);
         Permission::create(['name' => 'gp_slider_editar']);
         Permission::create(['name' => 'gp_slider_crear']);
         Permission::create(['name' => 'gp_slider_eliminar']);
+
         // create roles and assign existing permissions
         $admin = Role::create(['name' => 'Superadmin']);
         $empleado = Role::create(['name' => 'Administrador']);
@@ -107,6 +131,8 @@ class PermissionTableSeeder extends Seeder
         $portalweb_ciudadano = Role::create(['name' => 'portalweb_ciudadano']);
         $portalweb_regvisitas = Role::create(['name' => 'portalweb_regvisitas']);
         $consumo_pide = Role::create(['name' => 'consumo_pide']);
+        $Recursos_humanos = Role::create(['name' => 'Recursos_humanos']);
+        $Evaluacion_cas = Role::create(['name' => 'Evaluacion_cas']);
 
         // asignacion de roles y permisos
 
@@ -145,6 +171,28 @@ class PermissionTableSeeder extends Seeder
                 'inventario_crear',
                 'inventario_editar',
                 'inventario_eliminar',
+                'pagina_pide',
+
+                'menurecursos_humanos',
+                'empleados_index',
+                'asistencias_index',
+                'movimiento_index',
+                'permisos_index',
+                'licencias_index',
+                'vacaciones_index',
+                'honomastico_index',
+                'boletas_index',
+                'certificadotrabajo_index',
+                'menu_dashboard',
+                'dash_general_index',
+                'dash_asistencias_index',
+                'dash_vacaciones_index',
+                'dash_escalafon_index',
+                'dash_usuarios_index',
+
+                'menu_evaluacioncas',
+                'menu_administracion',
+
                 'acceso_gestionportales',
                 'gp_menu_portalweb',
                 'gp_configuracion_tema',
@@ -186,7 +234,6 @@ class PermissionTableSeeder extends Seeder
                 'pg_menu_registrovisitas',
                 'pg_registrovisitas_leer',
                 'pg_registrovisitas_reporte',
-                'pagina_pide',
                 'gp_slider_leer',
                 'gp_slider_editar',
                 'gp_slider_crear',

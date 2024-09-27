@@ -10,7 +10,7 @@ class Escalafon extends Model
     use HasFactory;
 
     protected $fillable = [
-		'nombres', 'apellidos', 'dni', 'ruc', 'sexo', 'nacimiento', 'vinculo', 'celular', 'nacionalidad', 'departamento', 'provincia', 'distrito', 'estadocivil', 'correo', 'correoinst', 'cargocontrato', 'cargoactual', 'direccion', 'regimen_id', 'depe_id','created_at','updated_at',
+		'nombres', 'apellidos', 'dni', 'ruc', 'sexo', 'nacimiento', 'vinculo', 'celular', 'nacionalidad', 'departamento', 'provincia', 'distrito', 'estadocivil', 'correo', 'correoinst', 'cargocontrato', 'cargoactual', 'direccion', 'regimen_id', 'depe_id','proceso_contratacion','archivo_contrato','url_contrato','remuneracion','estado','created_at','updated_at',
 	];
 
     protected $table='escalafon';

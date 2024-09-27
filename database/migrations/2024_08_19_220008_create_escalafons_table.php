@@ -35,6 +35,11 @@ return new class extends Migration
             $table->integer('regimen_id')->nullable();//tiporegimen
             $table->integer('oficina_id')->nullable();//id de oficina
             $table->integer('depe_id')->nullable();//id depe
+            $table->text('proceso_contratacion')->nullable();//PROCESO CAS- N°002-2023-GRH-CPSP-CAS
+            $table->text('archivo_contrato')->nullable();//ruta de archivo almacenado el pdf
+            $table->text('url_contrato')->nullable();//si es cargado en normatividad se indica la url
+            $table->float('remuneracion',5,2)->nullable();//sueldo
+            $table->integer('estado')->default(1);//1: contrato vigente, 0:finalizado
             $table->timestamps();
         });
     }
