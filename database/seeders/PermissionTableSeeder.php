@@ -72,8 +72,14 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['name' => 'dash_usuarios_index']);// dashboard usuarios
 
         // EVALUACION CAS
-        Permission::create(['name' => 'menu_evaluacioncas']);//
-        Permission::create(['name' => 'menu_administracion']);//
+        Permission::create(['name' => 'menu_evaluacioncas']);//menu evaluaciones
+
+        //MENU ROLES Y PERMISOS
+        Permission::create(['name' => 'menu_rolespermisos']);
+        // MENUS ADMINISTRACION
+        Permission::create(['name' => 'menu_administracion']);//menus administracion
+
+
         //para administrar GESTION PORTALES
         Permission::create(['name' => 'acceso_gestionportales']);
         Permission::create(['name' => 'gp_menu_portalweb']);
@@ -191,6 +197,7 @@ class PermissionTableSeeder extends Seeder
                 'dash_usuarios_index',
 
                 'menu_evaluacioncas',
+                'menu_rolespermisos',
                 'menu_administracion',
 
                 'acceso_gestionportales',

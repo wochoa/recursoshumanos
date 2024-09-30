@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         'firmaperu/*',
         'escalafon/*',
         'administracion/*',
-        'papeletassalidad/*'
+        'papeletassalidad/*',
+        'licenciassalidad/*',
     ];
 }

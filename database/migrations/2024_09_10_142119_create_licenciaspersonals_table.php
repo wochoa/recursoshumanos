@@ -23,9 +23,10 @@ return new class extends Migration
             $table->text('regdoc')->nullable();
             $table->text('regexp')->nullable();
             $table->enum('congoce',['POR ENFERMEDAD','POR MATERNIDAD','POR FALLECIMIENTO DEL CONYUGUE, PADRES, HIJOS O HNOS','POR MATERNIDAD','POR PATERNIDAD','POR CITACION EXPRESA(JUDICIAL,MILITAR)','POR ENFERMEDAD GRAVE O TERMINAL DE UN FAMILIAR DIRECTO(CONYUGUE,PADRES E HIJOS)'])->nullable();
-            $table->enum('singoce',['POR MOTIVOS PERSONALES','POR CAPACITACION OFICIALIZADA'])->nullable();
+            $table->enum('singoce',['POR MOTIVOS PARTICULARES','POR CAPACITACION NO OFICIALIZADA'])->nullable();
             $table->enum('vacaciones',['VACACIONES','POR MATRIMONIO','POR ENFERMEDAD GRAVE DEL CONYUGUE,PADRES E HIJOS'])->nullable();
             $table->enum('otros',['COMPENSACION POR HORAS EXTRAS','POR LACTANCIA','ONOMASTICO','COMISION SIN VIATICOS'])->nullable();
+            $table->text('justificacion')->nullable();
             $table->timestamps();
         });
     }

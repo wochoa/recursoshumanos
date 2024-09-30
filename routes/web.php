@@ -14,6 +14,7 @@ use App\Http\Controllers\Firmaperu;
 use App\Http\Controllers\BiotimeController;
 
 use App\Http\Controllers\PapeletaspermisosController as Permisos;
+use App\Http\Controllers\LicenciaspersonalController as Licencias;
 
 
 /*
@@ -81,6 +82,13 @@ route::post('papeletassalidad/addpapaletas',[Permisos::class,'addpapaletas'])->n
 route::get('papeletassalidad/idpapeleta',[Permisos::class,'idpapeleta'])->name('permisos.idpapeleta');
 route::get('papeletassalidad/updretorno',[Permisos::class,'updretorno'])->name('permisos.updretorno');
 route::get('papeletassalidad/busqueda',[Permisos::class,'busqueda'])->name('permisos.busqueda');
+
+// licencias
+route::get('licencia',[Licencias::class,'index'])->name('licencia.index');
+route::post('licenciassalidad/addpapaletas',[Licencias::class,'addpapaletas'])->name('licencia.addpapaletas');
+route::get('licenciassalidad/idpapeleta',[Licencias::class,'idpapeleta'])->name('licencia.idpapeleta');
+route::get('licenciassalidad/updretorno',[Licencias::class,'updretorno'])->name('licencia.updretorno');
+route::get('licenciassalidad/busqueda',[Licencias::class,'busqueda'])->name('licencia.busqueda');
 
 // firmaperu
 route::post('firmaperu/parametros',[Firmaperu::class,'parametros'])->name('firmaperu.parametros');

@@ -30,19 +30,19 @@ class AsistenciasController extends Controller
         {
             if(count($where)>0)
             {// cuando tiene elemenos where
-                $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all_resume')->where($where)->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
             }
             else{
-                $datos=DB::connection('asistencias')->table('marcaciones_all')->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all_resume')->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
             }
         }
         else{
             if(count($where)>0)
             {// cuando tiene elemenos where
-                $datos=DB::connection('asistencias')->table('marcaciones_all')->where($where)->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all_resume')->where($where)->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
             }
             else{
-                $datos=DB::connection('asistencias')->table('marcaciones_all')->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
+                $datos=DB::connection('asistencias')->table('marcaciones_all_resume')->orderBy('dni','desc')->orderBy('fecha','desc')->paginate(10);
             }
         }
 
