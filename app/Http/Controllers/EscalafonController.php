@@ -23,7 +23,7 @@ class EscalafonController extends Controller
     public function index()
     {
         // $datos=DB::connection('escalafon')->table('empleados')->orderBy('apellidos','desc')->paginate(10);
-        $datos=Escalafon::with('dependencia')->orderBy('apellidos','desc')->paginate(10);
+        $datos=Escalafon::with('dependencia')->with('regimen')->orderBy('apellidos','desc')->paginate(10);
         return $datos;
     }
 

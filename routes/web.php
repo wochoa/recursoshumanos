@@ -15,6 +15,7 @@ use App\Http\Controllers\BiotimeController;
 
 use App\Http\Controllers\PapeletaspermisosController as Permisos;
 use App\Http\Controllers\LicenciaspersonalController as Licencias;
+use App\Http\Controllers\VacacionesController;
 
 
 /*
@@ -63,6 +64,11 @@ Route::get('asistencias',[AsistenciasController::class, 'index'])->name('asisten
 Route::get('reordenamarcacion',[AsistenciasController::class, 'reordenamarcacion'])->name('reordenamarcacion');
 Route::get('asistenciaxdni',[AsistenciasController::class, 'asistenciaxdni'])->name('asistenciaxdni');// para calendario
 Route::get('listasistenciaxdni',[AsistenciasController::class, 'listasistenciaxdni'])->name('listasistenciaxdni');// para tablas
+
+//REGISTRO DE VACACIONES
+Route::get('vacaciones',[VacacionesController::class,'index'])->name('vacaciones.index');
+Route::post('gestvacaciones/add',[VacacionesController::class,'add'])->name('vacaciones.add');
+Route::get('gestvacaciones/idvacas',[VacacionesController::class,'buscarid'])->name('vacaciones.buscarid');
 
 // REGISTRO DE EMPLEADOS DE LA BASE DE DATOS ESCALAFON
 route::get('empleados',[EscalafonController::class,'index'])->name('empleados.index');

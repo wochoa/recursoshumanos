@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Licenciaspersonal;
 use Illuminate\Http\Request;
+use App\Models\Vacaciones;
 
 class LicenciaspersonalController extends Controller
 {
@@ -52,20 +53,43 @@ class LicenciaspersonalController extends Controller
      */
     public function addpapaletas(Request $request)
     {
-        // return $request->all();
-        $fecha=date('Y-m-d');
-        $Horasalida=date('H:i:s');
 
-        $datos=$request->all();
-        $add=new Licenciaspersonal();
-        $add->fill($datos);
-        // $add->fecha=$fecha;
-        // $add->hora_salida=$Horasalida;
+            $datos=$request->all();
 
-        $add->save();
-        // return $request->all();
+            if($request->vacaciones=='VACACIONES')
+            {
+                $result=$this->verifica_vacaciones($request->dni,$request->ndias);
+                if($result<0)
+                {
+                    return response()->json(["status"=>0,'message'=>'No cuenta con vacaciones, según los '.$request->ndias.' días solicitados'], 200);
+                }
+                else{
+                    return response()->json(["status"=>1,'message'=>'Si contó con vacaciones'], 200);
+                }
+            }
+
+            $add=new Licenciaspersonal();
+            $add->fill($datos);
+            $add->save();
+            return response()->json(["status"=>3,'message'=>'fue guardado con exito'], 200);
 
     }
+    public function verifica_vacaciones($dni,$dias)
+    {
+        $buscar= Vacaciones::rightJoin('escalafon','vacaciones.idescalafon','=','escalafon.idescalafon')
+                            ->where('dni',$dni)->first();
+            // actualizamos el resta dias nuevo= total-resta-ndias // son los dias que quedan para el servidor
+            $restadias=intval($buscar->tot_vacaciones)-intval($buscar->rest_vacaciones)-intval($dias);
+            if($restadias>=0)
+            {
+                $updvacas=Vacaciones::find($buscar->id);
+                $updvacas->rest_vacaciones=$restadias;
+                $updvacas->save();
+            }
+
+            return $restadias;
+    }
+
     public function busqueda(Request $request)
     {
         return $request->all();

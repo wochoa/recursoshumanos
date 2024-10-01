@@ -17,5 +17,6 @@ class VerifyCsrfToken extends Middleware
         'administracion/*',
         'papeletassalidad/*',
         'licenciassalidad/*',
+        'gestvacaciones/*',
     ];
 }

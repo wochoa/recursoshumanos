@@ -24,8 +24,17 @@ class DependenciaController extends Controller
 
     public function index()
     {
-        $datos=Dependencia::where(['depe_tipo'=>1,'depe_depende'=>3])->orderBy('depe_nombre','ASC')->get();
-        return $datos;
+        // $datos=Dependencia::where(['depe_tipo'=>1,'depe_depende'=>3])->orderBy('depe_nombre','ASC')->get();
+        $depes=array(3,53,54,55,56,59,60,1894);
+
+        // $datos=Dependencia::where('depe_tipo',1)->orderBy('depe_nombre','ASC')->get();
+        $result = Dependencia::where(function ($query) use ($depes) {
+            foreach ($depes as $item) {
+                $query->orWhere('depe_depende', '=', $item);
+                    // ->orWhere('col2', 'LIKE', "%{$item}%");
+            }
+        })->orderBy('depe_nombre','ASC')->get();
+        return $result;
     }
 
     /**

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('sexo')->nullable();
             $table->date('nacimiento')->nullable();//fecha nacimiento
             $table->date('vinculo')->nullable();//fecha vinculo
+            $table->date('termino')->nullable();//fecha termino
             $table->string('celular')->nullable();
             $table->string('nacionalidad')->nullable();
             $table->string('departamento')->nullable();
