@@ -20,10 +20,26 @@ class EscalafonController extends Controller
      * Display a listing of the resource.
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        // $datos=DB::connection('escalafon')->table('empleados')->orderBy('apellidos','desc')->paginate(10);
-        $datos=Escalafon::with('dependencia')->with('regimen')->orderBy('apellidos','desc')->paginate(10);
+        $where=[];
+
+        if($request->dni <> '')
+            $where[] = ['dni', $request->dni];
+
+        if($request->estado <> '')
+            $where[] = ['estado', $request->estado]; 
+        
+        if($request->condicion <> '')
+            $where[] = ['regimen_id', $request->condicion];
+        
+        if($request->mes <> '')
+            $where[] = ['nacimiento','like', '%-'.$request->mes.'-%'];
+
+        if($request->vinculo <> '')
+            $where[] = ['vinculo', $request->vinculo];
+
+        $datos=Escalafon::with('dependencia')->with('regimen')->where($where)->orderBy('apellidos','desc')->paginate(10);
         return $datos;
     }
 
