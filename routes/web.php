@@ -85,9 +85,12 @@ route::post('escalafon/addescalafon',[EscalafonController::class,'addescalafon']
 route::get('permisos',[Permisos::class,'index'])->name('permisos.index');
 route::get('dni/{num}',[Permisos::class,'dni'])->name('permisos.dni');
 route::post('papeletassalidad/addpapaletas',[Permisos::class,'addpapaletas'])->name('permisos.addpapaletas');
+route::post('papeletassalidad/updpapaletas',[Permisos::class,'updpapaletas'])->name('permisos.updpapaletas');
 route::get('papeletassalidad/idpapeleta',[Permisos::class,'idpapeleta'])->name('permisos.idpapeleta');
 route::get('papeletassalidad/updretorno',[Permisos::class,'updretorno'])->name('permisos.updretorno');
 route::get('papeletassalidad/busqueda',[Permisos::class,'busqueda'])->name('permisos.busqueda');
+route::get('/licenciassalidad/mostrararchivo/{idfile}',[Permisos::class, 'mostrararchivo'])->name('mostrararchivo');
+// route::get('/licenciassalidad/eliminapdf/{idfile}',[Permisos::class, 'eliminapdf'])->name('eliminapdf');
 
 // licencias
 route::get('licencia',[Licencias::class,'index'])->name('licencia.index');
@@ -95,6 +98,7 @@ route::post('licenciassalidad/addpapaletas',[Licencias::class,'addpapaletas'])->
 route::get('licenciassalidad/idpapeleta',[Licencias::class,'idpapeleta'])->name('licencia.idpapeleta');
 route::get('licenciassalidad/updretorno',[Licencias::class,'updretorno'])->name('licencia.updretorno');
 route::get('licenciassalidad/busqueda',[Licencias::class,'busqueda'])->name('licencia.busqueda');
+
 
 // firmaperu
 route::post('firmaperu/parametros',[Firmaperu::class,'parametros'])->name('firmaperu.parametros');

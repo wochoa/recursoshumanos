@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Papeletaspermisos;
 use Illuminate\Http\Request;
+use Storage;
 use Carbon\Carbon;
 
 class PapeletaspermisosController extends Controller
@@ -11,6 +12,11 @@ class PapeletaspermisosController extends Controller
     /**
      * Display a listing of the resource.
      */
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth' => 'verified'])->except('eliminapdf');
+    // }
+
     public function index(Request $request)
     {
         $fecha=date("Y-m-d", strtotime($request->fecha));
@@ -62,6 +68,39 @@ class PapeletaspermisosController extends Controller
         // return $request->all();
 
     }
+    public function updpapaletas(Request $request)
+    {
+        $datos=$request->all();
+        $upd=Papeletaspermisos::find($request->id);
+        $upd->fill($datos);
+
+        if($upd->archivo)
+        {
+            $rutaphp=storage_path($upd->archivo);
+            unlink($rutaphp);
+        }
+
+        if ($request->hasFile('file'))
+        {
+
+            //get filename with extension
+            $file = $request->file('file');//->getClientOriginalName();
+
+            $fileName= 'papeletas/'.date('Y').'/'.date('m').'/'.date('d').'/'.time().'-'.$file->getClientOriginalName();
+            // Storage::disk()->putFileAs('tramite', $file, $fileName); // SE GUARDA EN EL STORAGE
+
+            $filesystem = Storage::disk('papeletassalida');
+            $filesystem->putFileAs($file, $fileName);
+
+            $ubica_urlbd='papeletassalida/'.$fileName;
+
+            $upd->archivo=$ubica_urlbd;
+        }
+        $upd->save();
+        return $upd;
+
+
+    }
     public function busqueda(Request $request)
     {
         return $request->all();
@@ -99,6 +138,38 @@ class PapeletaspermisosController extends Controller
         $persona = json_decode($response);
         return $persona;
     }
+    public function mostrararchivo($idfile)
+    {
+        $datarachivo=Papeletaspermisos::find($idfile);
+        $rutaDelarchivo=$datarachivo->archivo;
+
+        // $rutaDeArchivo = Storage::path($rutaDelarchivo);
+
+        $headers = array(
+            'Content-Type: application/pdf',
+        );
+        $file = storage_path($rutaDelarchivo);
+        return response()->file($file);
+        // return response()->file($rutaDeArchivo,$headers);
+    }
+    // public function eliminapdf($idfile)
+    // {
+        
+    //     $upd=Papeletaspermisos::find($idfile);
+        
+    //     $rutaphp=storage_path($upd->archivo);
+    //     unlink($rutaphp);
+
+    //     // if($upd->archivo)
+    //     // {
+    //     //     if(file_exists($upd->archivo)){
+    //     //         // Storage::delete($upd->archivo);
+    //     //         unlink($upd->archivo);
+    //     //         return 'eliminado';
+    //     //     }
+    //     //     return 'eliminado';
+    //     // }
+    // }
 
 
     /**

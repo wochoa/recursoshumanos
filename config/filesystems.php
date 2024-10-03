@@ -44,6 +44,10 @@ return [
         'tramite' => [
             'driver' => 'local',
             'root' => storage_path('tramite'),
+        ], 
+        'papeletassalida' => [
+            'driver' => 'local',
+            'root' => storage_path('papeletassalida'),
         ],
 
         's3' => [
