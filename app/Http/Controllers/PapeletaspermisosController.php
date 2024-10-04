@@ -22,12 +22,30 @@ class PapeletaspermisosController extends Controller
         $fecha=date("Y-m-d", strtotime($request->fecha));
         $pendiente=$request->pendiente;
         $where=[];
+
         if($request->dni <> '')
             $where[] = ['dni', $request->dni];
         if($request->fecha <> '')
             $where[] = ['fecha', $fecha];
 
-        return Papeletaspermisos::where($where)->with('dependencia')->with('regimen')->orderBy('id','desc')->paginate(10);
+        if($pendiente!='')
+        {
+            switch($pendiente)
+            {
+                case 0: // pendeinte hora_retorno=null
+                    return Papeletaspermisos::where($where)->whereNull('hora_retorno')->with('dependencia')->with('regimen')->orderBy('id','desc')->paginate(10);
+                    break;
+                case 1:// si ha retrnado
+                    return Papeletaspermisos::where($where)->whereNotNull('hora_retorno')->with('dependencia')->with('regimen')->orderBy('id','desc')->paginate(10);
+                    break;
+                // default:
+                
+            }
+        }
+        
+            // $whereNotNull = 'hora_retorno';
+            return Papeletaspermisos::where($where)->with('dependencia')->with('regimen')->orderBy('id','desc')->paginate(10);
+        
     }
 
     /**
