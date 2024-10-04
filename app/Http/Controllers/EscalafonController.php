@@ -39,7 +39,7 @@ class EscalafonController extends Controller
         if($request->vinculo <> '')
             $where[] = ['vinculo', $request->vinculo];
 
-        $datos=Escalafon::with('dependencia')->with('regimen')->where($where)->orderBy('apellidos','desc')->paginate(10);
+        $datos=Escalafon::with('dependencia')->with('regimen')->where($where)->orderBy('idescalafon','desc')->paginate(10);
         return $datos;
     }
 
