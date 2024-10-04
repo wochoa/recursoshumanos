@@ -117,13 +117,20 @@ class EscalafonController extends Controller
 
     public function leerjson()
     {
-
-        if($this->sincronizar()){
-            $path=storage_path('app/cas.json');
-            $json = json_decode(file_get_contents($path), true);
-
-            return $json;
+        $rutaphp=storage_path('app/cas.json');
+        if (file_exists($rutaphp)){            
+            if($this->sincronizar()){
+                $path=storage_path('app/cas.json');
+                $json = json_decode(file_get_contents($path), true);
+    
+                return $json;
+            }
         }
+        // else{
+        //     return 'No hay datos';
+        // }
+
+        
 
     }
     public function verpostulante($idenvio)
@@ -168,6 +175,31 @@ class EscalafonController extends Controller
 
         // return $resultado;
 
+    }
+    public function actualizarjs()
+    {
+        $rutaphp=storage_path('app/cas.json');
+        if (file_exists($rutaphp)){            
+            unlink($rutaphp);
+            // return $rutaphp;
+        }
+        
+       
+        
+
+        $datos_reloj=DB::connection('marcacion')->table('personnel_employee')->select('emp_code')->groupBy('emp_code')->get();//where('emp_code',$dni)->get();
+
+
+            foreach($datos_reloj as $relog)
+            {
+                $reg[]=$relog->emp_code;
+            }
+            
+
+            $resultado=$this->buscarenconvocatoria($reg);
+            $file = Storage::put( 'cas.json', json_encode($resultado));
+            return redirect()->route('empleados.leerjson');
+            
     }
 
     public function datosescalafon(){

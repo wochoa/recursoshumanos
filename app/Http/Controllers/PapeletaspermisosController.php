@@ -70,9 +70,17 @@ class PapeletaspermisosController extends Controller
     }
     public function updpapaletas(Request $request)
     {
-        $datos=$request->all();
+        // $datos=$request->all();
+
         $upd=Papeletaspermisos::find($request->id);
-        $upd->fill($datos);
+        $upd->destino=$request->destino;
+        $upd->justificacion=$request->justificacion;
+        $upd->motivo_salida=$request->motivo_salida;
+        $upd->fecha=$request->fecha;
+        if($request->hora_retorno!='null')
+            $upd->hora_retorno=$request->hora_retorno;
+        $upd->hora_salida=$request->hora_salida;
+        // $upd->fill($datos);
 
         if($upd->archivo)
         {

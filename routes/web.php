@@ -76,6 +76,7 @@ route::get('resuempleado',[EscalafonController::class,'resumen'])->name('emplead
 route::get('empleadoxdni',[EscalafonController::class,'empleadoxdni'])->name('empleados.empleadoxdni');
 route::get('sincronizar',[EscalafonController::class,'sincronizar'])->name('empleados.sincronizar');
 route::get('leerjson',[EscalafonController::class,'leerjson'])->name('empleados.leerjson');
+route::get('actualizarjs',[EscalafonController::class,'actualizarjs'])->name('empleados.actualizarjs');
 route::get('buscadistrito/{id}',[EscalafonController::class,'buscadistrito'])->name('empleados.buscadistrito');
 route::get('verpostulante/{idenvio}',[EscalafonController::class,'verpostulante'])->name('empleados.verpostulante');
 route::get('regimenpersonal',[EscalafonController::class,'regimenpersonal'])->name('empleados.regimenpersonal');
