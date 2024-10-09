@@ -237,6 +237,9 @@ class EscalafonController extends Controller
         $add->fill($datos);
         $add->save();
 
+        // actualizar la tabla envioinscripcion en convocatoria
+        DB::connection('cas')->update('update envioinscripcion set migrado=1 where idenvioinsc=?',[$request->idenvioinsc] );
+
         // $this->sincronizar();
 
         return $add;
@@ -256,6 +259,22 @@ class EscalafonController extends Controller
     {
         $esc=Escalafon::find($request->idescalafon);
         return $esc;
+    }
+
+    // POSTULANTES QUE FALATAN MIGRAR
+    public function postulantesquefaltan()
+    {
+        $datos_reloj=DB::connection('marcacion')->table('personnel_employee')->select('emp_code')->groupBy('emp_code')->get();//where('emp_code',$dni)->get();
+
+
+            foreach($datos_reloj as $relog)
+            {
+                $reg[]=$relog->emp_code;
+            }
+
+
+            $resultado=$this->buscarenconvocatoria($reg);
+        return $resultado;
     }
 
     /**
