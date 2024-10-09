@@ -138,6 +138,9 @@ class PermissionTableSeeder extends Seeder
         $portalweb_regvisitas = Role::create(['name' => 'portalweb_regvisitas']);
         $consumo_pide = Role::create(['name' => 'consumo_pide']);
         $Recursos_humanos = Role::create(['name' => 'Recursos_humanos']);
+
+        $Constrol_asistencia = Role::create(['name' => 'Constrol_asistencia']);
+
         $Evaluacion_cas = Role::create(['name' => 'Evaluacion_cas']);
 
         // asignacion de roles y permisos
@@ -156,17 +159,8 @@ class PermissionTableSeeder extends Seeder
                 'Pagina_mioficina',
                 'Pagina_personalsoporte',
                 'pagina_userSGD',
-                'UsuarioSGD_rol',
-                'Pagina_roles',
-                'roles_leer',
-                'roles_crear',
-                'roles_editar',
-                'roles_eliminar',
-                'Pagina_permisos',
-                'permisos_leer',
-                'permisos_crear',
-                'permisos_editar',
-                'permisos_eliminar',
+
+
                 'Pagina_catatenciones',
                 'catatenciones_leer',
                 'catatenciones_crear',
@@ -198,6 +192,17 @@ class PermissionTableSeeder extends Seeder
 
                 'menu_evaluacioncas',
                 'menu_rolespermisos',
+                'UsuarioSGD_rol',
+                'Pagina_roles',
+                'roles_leer',
+                'roles_crear',
+                'roles_editar',
+                'roles_eliminar',
+                'Pagina_permisos',
+                'permisos_leer',
+                'permisos_crear',
+                'permisos_editar',
+                'permisos_eliminar',
                 'menu_administracion',
 
                 'acceso_gestionportales',
@@ -247,6 +252,27 @@ class PermissionTableSeeder extends Seeder
                 'gp_slider_eliminar'
             ]
         );
+        $Constrol_asistencia->givePermissionTo([
+            'menu_dashboard',
+            'dash_general_index',
+
+            'menurecursos_humanos',
+            'empleados_index',
+            'asistencias_index',
+            'movimiento_index',
+            'permisos_index',
+            'licencias_index',
+            'vacaciones_index',
+            'honomastico_index',
+            'boletas_index',
+            'certificadotrabajo_index',
+            'menu_dashboard',
+            'dash_general_index',
+            'dash_asistencias_index',
+            'dash_vacaciones_index',
+            'dash_escalafon_index',
+            'dash_usuarios_index',
+        ]);
 
        // create a demo user
     //   $user = Factory(App\User::class)->create([

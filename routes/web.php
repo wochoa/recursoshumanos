@@ -72,6 +72,7 @@ Route::get('gestvacaciones/idvacas',[VacacionesController::class,'buscarid'])->n
 
 // REGISTRO DE EMPLEADOS DE LA BASE DE DATOS ESCALAFON
 route::get('empleados',[EscalafonController::class,'index'])->name('empleados.index');
+route::get('empleadosid',[EscalafonController::class,'empleadosid'])->name('empleados.empleadosid');
 route::get('resuempleado',[EscalafonController::class,'resumen'])->name('empleados.resumen');
 route::get('empleadoxdni',[EscalafonController::class,'empleadoxdni'])->name('empleados.empleadoxdni');
 route::get('sincronizar',[EscalafonController::class,'sincronizar'])->name('empleados.sincronizar');
@@ -81,6 +82,7 @@ route::get('buscadistrito/{id}',[EscalafonController::class,'buscadistrito'])->n
 route::get('verpostulante/{idenvio}',[EscalafonController::class,'verpostulante'])->name('empleados.verpostulante');
 route::get('regimenpersonal',[EscalafonController::class,'regimenpersonal'])->name('empleados.regimenpersonal');
 route::post('escalafon/addescalafon',[EscalafonController::class,'addescalafon'])->name('empleados.addescalafon');
+route::post('escalafon/updescalafon',[EscalafonController::class,'updescalafon'])->name('empleados.updescalafon');
 
 // PAPELETAS DE SALIDAS
 route::get('permisos',[Permisos::class,'index'])->name('permisos.index');
