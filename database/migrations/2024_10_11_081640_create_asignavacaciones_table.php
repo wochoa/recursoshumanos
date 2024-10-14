@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('gasto_vacaciones', function (Blueprint $table) {
+        Schema::create('asignavacaciones', function (Blueprint $table) {
             $table->id();
-            $table->integer('idvacaciones');//tabla de vacaciones
-            $table->integer('idlicencias');// tabla de licencias
+            $table->integer('idvacaciones');
+            $table->text('sustento')->nullable();
+            $table->integer('cantidaddias');// al cumplir 1 ano se asigna 30 dias
+            $table->integer('status')->default(1);// 0: inactivo, 1:activo
             $table->timestamps();
         });
     }
@@ -24,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('gasto_vacaciones');
+        Schema::dropIfExists('asignavacaciones');
     }
 };

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Vacaciones;
 use Illuminate\Http\Request;
 use App\Models\Escalafon;
+use App\Models\Asignavacaciones;
 
 class VacacionesController extends Controller
 {
@@ -13,7 +14,7 @@ class VacacionesController extends Controller
      */
     public function index(Request $request)
     {
-        $where=[];
+        $where[]=['escalafon.estado', 1];
         if($request->dni)
             $where[] = ['dni', $request->dni];
         if($request->regimen)
@@ -42,18 +43,27 @@ class VacacionesController extends Controller
     {
 
         $datos=$request->all();
+
+        
+
         if($request->id){
-            $upd=Vacaciones::find($request->id);
-            $upd->sustento=$request->sustento;
-            $upd->tot_vacaciones=$request->tot_vacaciones;
-            $upd->rest_vacaciones=$request->rest_vacaciones;
-            $upd->save();
+            $addvac=Vacaciones::find($request->id);
+            // $upd->sustento=$request->sustento;
+            $addvac->tot_vacaciones=$request->tot_vacaciones;
+            $addvac->rest_vacaciones=$request->rest_vacaciones;
+            $addvac->save();
         }
         else{
             $addvac=new Vacaciones();
             $addvac->fill($datos);
-            $addvac->save();
+            $addvac->save();            
         }
+
+            $asig=new Asignavacaciones();
+            $asig->idvacaciones=$addvac->id;
+            $asig->sustento=$request->sustento;
+            $asig->cantidaddias=$request->cantidad;
+            $asig->save();
 
     }
 

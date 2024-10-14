@@ -10,7 +10,7 @@ class Vacaciones extends Model
     use HasFactory;
     protected $table='vacaciones';
     protected $fillable = [
-		'idescalafon','sustento', 'tot_vacaciones', 'rest_vacaciones', ];
+		'idescalafon', 'tot_vacaciones', 'rest_vacaciones', ];
 
     // public function escalafon()
     // {

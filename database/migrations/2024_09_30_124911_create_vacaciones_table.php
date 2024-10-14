@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('vacaciones', function (Blueprint $table) {
             $table->id();
             $table->integer('idescalafon');
-            $table->text('sustento');// porque se asignan vacaciones en la columna tot-vacaciones
-            $table->integer('tot_vacaciones');// p.ejemplo 30 (30 dis)
-            $table->integer('rest_vacaciones');// lo que va gastando sus vacaciones
+            // $table->text('sustento');// porque se asignan vacaciones en la columna tot-vacaciones
+            $table->integer('tot_vacaciones')->default(0);// p.ejemplo 30 (30 dis)
+            $table->integer('rest_vacaciones')->default(0);// lo que va gastando sus vacaciones
             $table->timestamps();
         });
     }
