@@ -45,25 +45,31 @@ class VacacionesController extends Controller
         $datos=$request->all();
 
         
+        if($request->tipofrm==1){// si es la primera vez agrega a VACACIONES y tmb se agrega a ASIGNAVACIONES   
+            $addvac=new Vacaciones();
+            $addvac->fill($datos);
+            $addvac->save();
 
-        if($request->id){
+            
+        }
+
+        if($request->tipofrm==2||$request->tipofrm==3){// cuando se modifica a VACACIONES
             $addvac=Vacaciones::find($request->id);
-            // $upd->sustento=$request->sustento;
             $addvac->tot_vacaciones=$request->tot_vacaciones;
             $addvac->rest_vacaciones=$request->rest_vacaciones;
             $addvac->save();
         }
-        else{
-            $addvac=new Vacaciones();
-            $addvac->fill($datos);
-            $addvac->save();            
-        }
-
+        // if($request->tipofrm==3){// se agrega cunado solo se asigna vacaciones
             $asig=new Asignavacaciones();
             $asig->idvacaciones=$addvac->id;
             $asig->sustento=$request->sustento;
             $asig->cantidaddias=$request->cantidad;
             $asig->save();
+        // }
+        
+        
+
+            
 
     }
 
