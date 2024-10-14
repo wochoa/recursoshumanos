@@ -67,7 +67,7 @@ class LicenciaspersonalController extends Controller
                             $resta=$dia_ant-$dia_act;
                             
                             if($resta>0){// se debe sumar la diferencia de dias en dias que quedan en vacaciones
-                                $buscar= Vacaciones::join('escalafon','vacaciones.idescalafon','=','escalafon.idescalafon')->where('dni',$request->dni)->first();
+                                $buscar= Vacaciones::join('escalafon','vacaciones.idescalafon','=','escalafon.idescalafon')->where(['dni'=>$request->dni,'estado'=>1])->first();
                                 $restadias=intval($buscar->rest_vacaciones)+intval($resta);
                                 // $ndias=$restadias;
 
@@ -77,7 +77,7 @@ class LicenciaspersonalController extends Controller
                             }
                             else{// aqui se tiene que restar pero previo verificacion de vacaciones
                                 $cantidad=abs($resta);
-                                $buscar= Vacaciones::join('escalafon','vacaciones.idescalafon','=','escalafon.idescalafon')->where('dni',$request->dni)->first();
+                                $buscar= Vacaciones::join('escalafon','vacaciones.idescalafon','=','escalafon.idescalafon')->where(['dni'=>$request->dni,'estado'=>1])->first();
                                 $restadias=intval($buscar->rest_vacaciones)-intval($cantidad);
                                 // $ndias=$restadias;
 
