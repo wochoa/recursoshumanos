@@ -102,9 +102,7 @@ class LicenciaspersonalController extends Controller
                             {
                                 return response()->json(["status"=>0,'message'=>'No cuenta con vacaciones, según los '.$request->ndias.' días solicitados'], 200);
                             }
-                            // else{
-                            //     return response()->json(["status"=>1,'message'=>'Si contó con vacaciones'], 200);
-                            // }
+                            
                         }
                         
                     }
@@ -120,16 +118,16 @@ class LicenciaspersonalController extends Controller
         $buscar= Vacaciones::join('escalafon','vacaciones.idescalafon','=','escalafon.idescalafon')
                             ->where(['dni'=>$dni,'estado'=>1])->first();
             // actualizamos el resta dias nuevo= total-resta-ndias // son los dias que quedan para el servidor
-            $restadias=intval($buscar->tot_vacaciones)-(intval($buscar->rest_vacaciones)-intval($dias));
+            // $restadias=intval($buscar->tot_vacaciones)-(intval($buscar->rest_vacaciones)-intval($dias));
             $restaupd=intval($buscar->rest_vacaciones)-intval($dias);
-            if($restadias>=0)
+            if($restaupd>=0)
             {
                 $updvacas=Vacaciones::find($buscar->id);
                 $updvacas->rest_vacaciones=$restaupd;
                 $updvacas->save();
             }
 
-            return $restadias;
+            return $restaupd;
     }
 
     public function busqueda(Request $request)
@@ -137,35 +135,5 @@ class LicenciaspersonalController extends Controller
         return $request->all();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Licenciaspersonal $licenciaspersonal)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Licenciaspersonal $licenciaspersonal)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Licenciaspersonal $licenciaspersonal)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Licenciaspersonal $licenciaspersonal)
-    {
-        //
-    }
+ 
 }
