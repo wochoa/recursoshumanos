@@ -14,7 +14,8 @@ class VacacionesController extends Controller
      */
     public function index(Request $request)
     {
-        $where[]=['escalafon.estado', 1];
+        // $where[]=['escalafon.estado', 1];
+        $where=[];
         if($request->dni)
             $where[] = ['dni', $request->dni];
         if($request->regimen)
