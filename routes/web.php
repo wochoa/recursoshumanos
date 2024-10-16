@@ -61,6 +61,7 @@ Route::get('datospersonales', [Usuarios::class, 'datospersonales']);
 
 // REGISTRO DE ASISTENCIAS
 Route::get('asistencias',[AsistenciasController::class, 'index'])->name('asistencias');
+Route::get('asistencias/pdf',[AsistenciasController::class, 'pdf'])->name('asistencias.pdf');
 Route::get('reordenamarcacion',[AsistenciasController::class, 'reordenamarcacion'])->name('reordenamarcacion');
 Route::get('asistenciaxdni',[AsistenciasController::class, 'asistenciaxdni'])->name('asistenciaxdni');// para calendario
 Route::get('listasistenciaxdni',[AsistenciasController::class, 'listasistenciaxdni'])->name('listasistenciaxdni');// para tablas

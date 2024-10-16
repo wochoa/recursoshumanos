@@ -11,6 +11,8 @@ use Carbon\Carbon;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use PDF;
 
 class AsistenciasController extends Controller
 {
@@ -48,6 +50,43 @@ class AsistenciasController extends Controller
 
         return $datos;
         // return $this->reordenamarcacion($datos);
+    }
+    public function pdf(Request $request)
+    {
+
+        $fechaini= date("Y-m-d", strtotime($request->fechaini));
+        $fechafin= date("Y-m-d", strtotime($request->fechafin));
+        $where=[];
+        if ($request->dni <> '')
+            $where[] = ['dni', $request->dni];
+
+        if($request->fechaini <> '' and $request->fechafin <> '')
+        {
+            if(count($where)>0)
+            {// cuando tiene elemenos where
+                $datos=DB::connection('asistencias')->table('marcaciones_all_resume')->select('id','dni','nombre_completo as nombre','fecha','ma_1','ma_2','ma_3','ma_4','tot_min_ta as m_tarde','tot_min_ex as m_extra')->where($where)->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('dni','desc')->orderBy('fecha','desc')->get();
+            }
+            else{
+                $datos=DB::connection('asistencias')->table('marcaciones_all_resume')->select('id','dni','nombre_completo as nombre','fecha','ma_1','ma_2','ma_3','ma_4','tot_min_ta as m_tarde','tot_min_ex as m_extra')->whereBetween('fecha', [$fechaini, $fechafin])->orderBy('dni','desc')->orderBy('fecha','desc')->get();
+            }
+        }
+        else{
+            if(count($where)>0)
+            {// cuando tiene elemenos where
+                $datos=DB::connection('asistencias')->table('marcaciones_all_resume')->select('id','dni','nombre_completo as nombre','fecha','ma_1','ma_2','ma_3','ma_4','tot_min_ta as m_tarde','tot_min_ex as m_extra')->where($where)->orderBy('dni','desc')->orderBy('fecha','desc')->get();
+            }
+            else{
+                $datos=DB::connection('asistencias')->table('marcaciones_all_resume')->select('id','dni','nombre_completo as nombre','fecha','ma_1','ma_2','ma_3','ma_4','tot_min_ta as m_tarde','tot_min_ex as m_extra')->orderBy('dni','desc')->orderBy('fecha','desc')->get();
+            }
+        }
+        //dowlandpdf
+        
+        // $pdf = Pdf::loadView('dowlandpdf', compact('datos'));
+        // $pdf->setPaper('A4', 'landscape');
+        // //  return $pdf->stream();
+        // return $pdf->output();
+        return $datos;
+
     }
     public function paginate($items, $perPage = 10, $page = null, $options = [])
     {

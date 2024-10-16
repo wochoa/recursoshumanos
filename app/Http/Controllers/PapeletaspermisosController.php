@@ -135,7 +135,7 @@ class PapeletaspermisosController extends Controller
     public function dni($num)
     {
         // Datos
-        $token = 'apis-token-10468.00SYH65hyt-aKbPBAkvavXBtR0x9CbWR';
+        $token = 'apis-token-11039.IXruf4gnUkvd3PxUXGh4VbfKoCZPRds7';
         $dni = $num;
 
         // Iniciar llamada a API
