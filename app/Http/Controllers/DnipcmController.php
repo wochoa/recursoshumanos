@@ -36,6 +36,7 @@ class DnipcmController extends Controller
     {
         // dni
         $consulta=Dnipcm::where('estado',1)->first();
+        $id=
         $nuDniConsulta=$request->dni;
         $nuDniUsuario=$consulta->nuDni;
         $nuRucUsuario=$consulta->nuRuc;
@@ -85,17 +86,27 @@ class DnipcmController extends Controller
         //     ),
         //     "deResultado"=>$return->deResultado            
         // );
-        $datos=array(
-            "apPrimer"=>$return->datosPersona->apPrimer,
-            "apSegundo"=>$return->datosPersona->apSegundo,
-            "direccion"=>$return->datosPersona->direccion,
-            "estadoCivil"=>$return->datosPersona->estadoCivil,
-            "foto"=>$return->datosPersona->foto,
-            "prenombres"=>$return->datosPersona->prenombres,
-            "restriccion"=>$return->datosPersona->restriccion,
-            "ubigeo"=>$return->datosPersona->ubigeo,
-            "digitoVerificador"=>$persona->digitoVerificador
-        );
+        if($return->coResultado="0000")
+        {
+            $datos=array(
+                "apPrimer"=>$return->datosPersona->apPrimer,
+                "apSegundo"=>$return->datosPersona->apSegundo,
+                "direccion"=>$return->datosPersona->direccion,
+                "estadoCivil"=>$return->datosPersona->estadoCivil,
+                "foto"=>$return->datosPersona->foto,
+                "prenombres"=>$return->datosPersona->prenombres,
+                "restriccion"=>$return->datosPersona->restriccion,
+                "ubigeo"=>$return->datosPersona->ubigeo,
+                "digitoVerificador"=>$persona->digitoVerificador
+            );
+            $upd=Dnipcm::find($consulta->id);
+            $upd->creditos=$consulta->creditos-1;
+            $upd->save();
+        }
+        {
+            //  catualizamos a otro
+        }
+        
         return $datos;
     }
 
