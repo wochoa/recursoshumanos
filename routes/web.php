@@ -93,7 +93,7 @@ route::post('escalafon/updescalafon',[EscalafonController::class,'updescalafon']
 
 route::get('dni/{num}',[Permisos::class,'dni'])->name('permisos.dni');
 route::post('dni/consultadni',[DnipcmController::class,'consultadni'])->name('consultadni');
-route::post('dni/consultadni_codeveri',[DnipcmController::class,'consultadni_codeveri'])->name('consultadni_codeveri');
+route::post('dni/dni_codveri',[DnipcmController::class,'dni_codveri'])->name('dni_codveri');
 
 // PAPELETAS DE SALIDAS
 route::get('permisos',[Permisos::class,'index'])->name('permisos.index');
