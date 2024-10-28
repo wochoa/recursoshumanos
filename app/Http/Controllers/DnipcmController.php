@@ -36,7 +36,6 @@ class DnipcmController extends Controller
     {
         // dni
         $consulta=Dnipcm::where('estado',1)->first();
-        $id=
         $nuDniConsulta=$request->dni;
         $nuDniUsuario=$consulta->nuDni;
         $nuRucUsuario=$consulta->nuRuc;
