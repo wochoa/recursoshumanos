@@ -17,6 +17,9 @@ use App\Http\Controllers\PapeletaspermisosController as Permisos;
 use App\Http\Controllers\LicenciaspersonalController as Licencias;
 use App\Http\Controllers\VacacionesController;
 
+// CONSULTA DNI X RENIEC
+use App\Http\Controllers\DnipcmController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -86,9 +89,14 @@ route::get('regimenpersonal',[EscalafonController::class,'regimenpersonal'])->na
 route::post('escalafon/addescalafon',[EscalafonController::class,'addescalafon'])->name('empleados.addescalafon');
 route::post('escalafon/updescalafon',[EscalafonController::class,'updescalafon'])->name('empleados.updescalafon');
 
+// CONSULTA DE DNI SEGUN RENIEC
+
+route::get('dni/{num}',[Permisos::class,'dni'])->name('permisos.dni');
+route::post('dni/consultadni',[DnipcmController::class,'consultadni'])->name('consultadni');
+
 // PAPELETAS DE SALIDAS
 route::get('permisos',[Permisos::class,'index'])->name('permisos.index');
-route::get('dni/{num}',[Permisos::class,'dni'])->name('permisos.dni');
+
 route::post('papeletassalidad/addpapaletas',[Permisos::class,'addpapaletas'])->name('permisos.addpapaletas');
 route::post('papeletassalidad/updpapaletas',[Permisos::class,'updpapaletas'])->name('permisos.updpapaletas');
 route::get('papeletassalidad/idpapeleta',[Permisos::class,'idpapeleta'])->name('permisos.idpapeleta');

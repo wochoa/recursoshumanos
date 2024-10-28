@@ -43,6 +43,8 @@ class BiotimeController extends Controller
 
             switch(intval($hora))
             {
+                case 5: $className='bg-success text-white'; $marcacion='Ingreso'; $diapuntual+=0.5;break;
+                case 6: $className='bg-success text-white'; $marcacion='Ingreso'; $diapuntual+=0.5;break;
                 case 7: $className='bg-success text-white'; $marcacion='Ingreso'; $diapuntual+=0.5;break;
                 case 8:
                     if($minuto>=0 and $minuto<=11){
