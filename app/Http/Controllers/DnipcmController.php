@@ -91,6 +91,11 @@ class DnipcmController extends Controller
         }
         {
             //  catualizamos a otro
+            $upd=Dnipcm::find($consulta->id);
+            $upd->creditos=1000;// listo para el dia siguiente
+            $upd->estado=0;
+            $upd->save();
+            $datos="Se consumio todo los datos";
         }
         
         return $datos;
