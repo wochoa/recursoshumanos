@@ -70,20 +70,31 @@ class DnipcmController extends Controller
 
         
         $return=$response_data->consultarResponse->return;
+        // $datos=array(
+        //     "coResultado"=>$return->coResultado,
+        //     "datosPersona"=>array(
+        //         "apPrimer"=>$return->datosPersona->apPrimer,
+        //         "apSegundo"=>$return->datosPersona->apSegundo,
+        //         "direccion"=>$return->datosPersona->direccion,
+        //         "estadoCivil"=>$return->datosPersona->estadoCivil,
+        //         "foto"=>$return->datosPersona->foto,
+        //         "prenombres"=>$return->datosPersona->prenombres,
+        //         "restriccion"=>$return->datosPersona->restriccion,
+        //         "ubigeo"=>$return->datosPersona->ubigeo,
+        //         "digitoVerificador"=>$persona->digitoVerificador
+        //     ),
+        //     "deResultado"=>$return->deResultado            
+        // );
         $datos=array(
-            "coResultado"=>$return->coResultado,
-            "datosPersona"=>array(
-                "apPrimer"=>$return->datosPersona->apPrimer,
-                "apSegundo"=>$return->datosPersona->apSegundo,
-                "direccion"=>$return->datosPersona->direccion,
-                "estadoCivil"=>$return->datosPersona->estadoCivil,
-                "foto"=>$return->datosPersona->foto,
-                "prenombres"=>$return->datosPersona->prenombres,
-                "restriccion"=>$return->datosPersona->restriccion,
-                "ubigeo"=>$return->datosPersona->ubigeo,
-                "digitoVerificador"=>$persona->digitoVerificador
-            ),
-            "deResultado"=>$return->deResultado            
+            "apPrimer"=>$return->datosPersona->apPrimer,
+            "apSegundo"=>$return->datosPersona->apSegundo,
+            "direccion"=>$return->datosPersona->direccion,
+            "estadoCivil"=>$return->datosPersona->estadoCivil,
+            "foto"=>$return->datosPersona->foto,
+            "prenombres"=>$return->datosPersona->prenombres,
+            "restriccion"=>$return->datosPersona->restriccion,
+            "ubigeo"=>$return->datosPersona->ubigeo,
+            "digitoVerificador"=>$persona->digitoVerificador
         );
         return $datos;
     }
