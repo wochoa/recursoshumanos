@@ -49,27 +49,7 @@ class DnipcmController extends Controller
         $api=file_get_contents($url);
         $response_data = json_decode($api);
 
-        // $curl = curl_init();
-        // $token = 'apis-token-11039.IXruf4gnUkvd3PxUXGh4VbfKoCZPRds7';
-        // curl_setopt_array($curl, array(
-        // CURLOPT_URL => 'https://api.apis.net.pe/v2/reniec/dni?numero=' . $request->dni,
-        // CURLOPT_RETURNTRANSFER => true,
-        // CURLOPT_SSL_VERIFYPEER => 0,
-        // CURLOPT_ENCODING => '',
-        // CURLOPT_MAXREDIRS => 2,
-        // CURLOPT_TIMEOUT => 0,
-        // CURLOPT_FOLLOWLOCATION => true,
-        // CURLOPT_CUSTOMREQUEST => 'GET',
-        // CURLOPT_HTTPHEADER => array(
-        //     'Referer: https://apis.net.pe/consulta-dni-api',
-        //     'Authorization: Bearer ' . $token
-        // ),
-        // ));
-        // $response = curl_exec($curl);
-        // curl_close($curl);
-        // $persona = json_decode($response);
-
-        
+               
         $return=$response_data->consultarResponse->return;
 
         if($return->coResultado="0000")

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('nuDni');
             $table->bigInteger('nuRuc');
             $table->integer('creditos');
+            $table->text('key');// key de acceso
             $table->integer('estado')->default(0);
             $table->timestamps();
         });
