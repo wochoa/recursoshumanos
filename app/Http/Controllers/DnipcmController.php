@@ -32,6 +32,54 @@ class DnipcmController extends Controller
     {
         //
     }
+    public function consultadniget(Request $request)
+    {
+        // dni
+        $consulta=Dnipcm::where('estado',1)->first();
+
+        $nuDniConsulta=$request->dni;
+        $nuDniUsuario=$consulta->nuDni;
+        $nuRucUsuario=$consulta->nuRuc;
+        $password=$consulta->nuDni;
+        $keybd=$consulta->key;
+
+        $key=$request->key;//env("JWT_SECRET");// token del API
+
+        if($key==$keybd)
+        {
+            $url="https://ws2.pide.gob.pe/Rest/RENIEC/Consultar?nuDniConsulta=".$nuDniConsulta."&nuDniUsuario=".$nuDniUsuario."&nuRucUsuario=".$nuRucUsuario."&password=".$nuDniUsuario."&out=json";
+            $api=file_get_contents($url);
+            $response_data = json_decode($api);
+                
+            $return=$response_data->consultarResponse->return;
+
+            if($return->coResultado="0000")
+            {
+                $datos=array(
+                    "apPrimer"=>$return->datosPersona->apPrimer,
+                    "apSegundo"=>$return->datosPersona->apSegundo,
+                    "direccion"=>$return->datosPersona->direccion,
+                    "estadoCivil"=>$return->datosPersona->estadoCivil,
+                    "foto"=>$return->datosPersona->foto,
+                    "prenombres"=>$return->datosPersona->prenombres,
+                    "restriccion"=>$return->datosPersona->restriccion,
+                    "ubigeo"=>$return->datosPersona->ubigeo,
+                );
+                $upd=Dnipcm::find($consulta->id);
+                $upd->creditos=$consulta->creditos-1;
+                $upd->save();
+            }
+            else
+            {
+                //  catualizamos a otro si se gasta los creditos
+            }
+        
+        return $datos;
+        }
+        else{
+            return response()->json(['status'=>0,'msg'=>'No concuerda las credenciales'], 200);
+        }        
+    }    
     public function consultadni(Request $request)
     {
         // dni
@@ -73,17 +121,16 @@ class DnipcmController extends Controller
                 $upd->creditos=$consulta->creditos-1;
                 $upd->save();
             }
+            else
             {
-                //  catualizamos a otro
+                //  catualizamos a otro si se gasta los creditos
             }
         
         return $datos;
         }
         else{
-            return response()->json('No concuerda las credenciales', 200);
-        }
-
-        
+            return response()->json(['status'=>0,'msg'=>'No concuerda las credenciales'], 200);
+        }        
     }
 
     public function dni_codveri(Request $request)
@@ -147,6 +194,7 @@ class DnipcmController extends Controller
                 $upd->creditos=$consulta->creditos-1;
                 $upd->save();
             }
+            else
             {
                 //  catualizamos a otro
             }

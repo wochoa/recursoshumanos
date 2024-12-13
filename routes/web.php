@@ -15,6 +15,7 @@ use App\Http\Controllers\BiotimeController;
 
 use App\Http\Controllers\PapeletaspermisosController as Permisos;
 use App\Http\Controllers\LicenciaspersonalController as Licencias;
+use App\Http\Controllers\ReginicidenciasController as Incidencias;
 use App\Http\Controllers\VacacionesController;
 
 // CONSULTA DNI X RENIEC
@@ -94,6 +95,8 @@ route::post('escalafon/updescalafon',[EscalafonController::class,'updescalafon']
 route::get('dni/{num}',[Permisos::class,'dni'])->name('permisos.dni');
 route::post('dni/consultadni',[DnipcmController::class,'consultadni'])->name('consultadni');
 route::post('dni/dni_codveri',[DnipcmController::class,'dni_codveri'])->name('dni_codveri');
+// get
+route::get('dni/consultadniget',[DnipcmController::class,'consultadniget'])->name('consultadniget');
 
 // PAPELETAS DE SALIDAS
 route::get('permisos',[Permisos::class,'index'])->name('permisos.index');
@@ -112,6 +115,11 @@ route::post('licenciassalidad/addpapaletas',[Licencias::class,'addpapaletas'])->
 route::get('licenciassalidad/idpapeleta',[Licencias::class,'idpapeleta'])->name('licencia.idpapeleta');
 route::get('licenciassalidad/updretorno',[Licencias::class,'updretorno'])->name('licencia.updretorno');
 route::get('licenciassalidad/busqueda',[Licencias::class,'busqueda'])->name('licencia.busqueda');
+
+// REGISTRO DE INICIDENCIAS
+
+route::get('incidencias',[Incidencias::class,'index'])->name('incidencias.index');
+Route::get('incidencias/pdf',[Incidencias::class, 'pdf'])->name('incidencias.pdf');
 
 
 // firmaperu

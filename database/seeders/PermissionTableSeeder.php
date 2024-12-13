@@ -57,6 +57,7 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['name' => 'empleados_index']);// listade emepleados
         Permission::create(['name' => 'asistencias_index']);// listade emepleados
         Permission::create(['name' => 'movimiento_index']);// listade emepleados
+        Permission::create(['name' => 'incidencias_index']);// listade emepleados
         Permission::create(['name' => 'permisos_index']);// listade emepleados
         Permission::create(['name' => 'licencias_index']);// listade emepleados
         Permission::create(['name' => 'vacaciones_index']);// listade emepleados
@@ -177,6 +178,7 @@ class PermissionTableSeeder extends Seeder
                 'empleados_index',
                 'asistencias_index',
                 'movimiento_index',
+                'incidencias_index',
                 'permisos_index',
                 'licencias_index',
                 'vacaciones_index',
@@ -260,6 +262,7 @@ class PermissionTableSeeder extends Seeder
             'empleados_index',
             'asistencias_index',
             'movimiento_index',
+            'incidencias_index',
             'permisos_index',
             'licencias_index',
             'vacaciones_index',
