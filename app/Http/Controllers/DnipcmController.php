@@ -32,18 +32,18 @@ class DnipcmController extends Controller
     {
         //
     }
-    public function consultadniget(Request $request)
+    public function getdni($dni,$key)
     {
         // dni
         $consulta=Dnipcm::where('estado',1)->first();
 
-        $nuDniConsulta=$request->dni;
+        $nuDniConsulta=$dni;
         $nuDniUsuario=$consulta->nuDni;
         $nuRucUsuario=$consulta->nuRuc;
         $password=$consulta->nuDni;
         $keybd=$consulta->key;
 
-        $key=$request->key;//env("JWT_SECRET");// token del API
+        $key=$key;//env("JWT_SECRET");// token del API
 
         if($key==$keybd)
         {

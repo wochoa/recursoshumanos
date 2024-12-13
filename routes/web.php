@@ -96,7 +96,7 @@ route::get('dni/{num}',[Permisos::class,'dni'])->name('permisos.dni');
 route::post('dni/consultadni',[DnipcmController::class,'consultadni'])->name('consultadni');
 route::post('dni/dni_codveri',[DnipcmController::class,'dni_codveri'])->name('dni_codveri');
 // get
-route::get('dni/consultadniget',[DnipcmController::class,'consultadniget'])->name('consultadniget');
+route::get('dni/getdni/{dni}/{key}',[DnipcmController::class,'getdni'])->name('getdni');
 
 // PAPELETAS DE SALIDAS
 route::get('permisos',[Permisos::class,'index'])->name('permisos.index');
