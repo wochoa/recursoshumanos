@@ -223,13 +223,13 @@ class AsistenciasController extends Controller
                         $className='bg-info text-white'; $marcacion='Ingreso tarde';
                     }
                     else{
-                        $className='bg-danger text-white'; $marcacion='Desc.Todo el día';
+                        $className='bg-danger text-white'; $marcacion='Ingreso tarde';//Desc.Todo el día
                     }
                     break;
-                case 9: $className='bg-danger text-white'; $marcacion='Desc.Todo el día';break;
-                case 10: $className='bg-danger text-white'; $marcacion='Desc.Todo el día';break;
-                case 11: $className='bg-danger text-white'; $marcacion='Desc.Todo el día';break;
-                case 12: $className='bg-danger text-white'; $marcacion='Desc.Todo el día';break;
+                case 9: $className='bg-danger text-white'; $marcacion='Ingreso tarde';break;//Desc.Todo el día
+                case 10: $className='bg-danger text-white'; $marcacion='Ingreso tarde';break;//Desc.Todo el día
+                case 11: $className='bg-danger text-white'; $marcacion='Ingreso tarde';break;//Desc.Todo el día
+                case 12: $className='bg-danger text-white'; $marcacion='Ingreso tarde';break;//Desc.Todo el día
                 case 13: $className='bg-warning text-white'; $marcacion='Salida'; break;
                 case 14: $className='bg-success text-white'; $marcacion='Ingreso'; break;
                 case 15: if($minuto>=0 and $minuto<=11)
