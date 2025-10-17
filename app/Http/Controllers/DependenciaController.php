@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Dependencia;
+use Illuminate\Support\Facades\DB;
 
 class DependenciaController extends Controller
 {
@@ -40,17 +41,26 @@ class DependenciaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function usuariosoficina()
     {
-        //
+        $depe=auth()->user()->depe_id;
+        $datos=User::where(['depe_id'=>$depe,'adm_estado'=>1])->orderBy('id','ASC')->paginate(10);
+        return response()->json($datos);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function soporteinformatico()
     {
-        //
+         $idofi=auth()->user()->depe_id;
+         $coddependencia=Dependencia::where('iddependencia',$idofi)->value('depe_depende');
+         $usersoporte=DB::table('vistausersoporte')->where(['depe_depende'=>$coddependencia,'adm_estado'=>1,'rolasignado'=>'Soporte'])->paginate(10);
+         return response()->json($usersoporte);
+    }
+    public function soportedj()
+    {
+         $idofi=auth()->user()->depe_id;
+         $coddependencia=Dependencia::where('iddependencia',$idofi)->value('depe_depende');
+         $usersoporte=DB::table('vistausersoporte')->where(['depe_depende'=>$coddependencia,'adm_estado'=>1,'rolasignado'=>'Soporte_DJI'])->paginate(10);
+         return response()->json($usersoporte);
     }
 
     /**

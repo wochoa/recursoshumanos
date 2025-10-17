@@ -5,6 +5,7 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Auth;
     use App\Models\User;
+    use App\Models\Dependencia;
     use Validator;
 
     class AuthController extends Controller
@@ -98,11 +99,19 @@
          * @return \Illuminate\Http\JsonResponse
          */
         protected function createNewToken($token){
+            $user = auth()->user();
+
+            $idoficina=auth()->user()->depe_id;
+            $iddepe=Dependencia::where('iddependencia',$idoficina)->value('depe_depende');
+
             return response()->json([
                 'access_token' => $token,
                 'token_type' => 'bearer',
                 'expires_in' => auth()->factory()->getTTL() * 60,
-                'user' => auth()->user()
+                'user' => auth()->user(),
+                'sede' => $iddepe,
+                'roles' => $user->getRoleNames(), // ['admin']
+                'permissions' => $user->getAllPermissions()->pluck('name') // ['edit articles']
             ]);
         }
 }

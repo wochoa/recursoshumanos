@@ -21,6 +21,9 @@ use App\Http\Controllers\VacacionesController;
 // CONSULTA DNI X RENIEC
 use App\Http\Controllers\DnipcmController;
 
+use App\Http\Controllers\CatatencionesController;
+use App\Http\Controllers\TicketController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -131,7 +134,18 @@ route::post('firmaperu/upload',[Firmaperu::class,'upload'])->name('firmaperu.upl
 route::get('biotime/marcaciones',[BiotimeController::class,'index'])->name('biotime.index');
 route::get('biotime/marcacionxdni',[BiotimeController::class,'marcacion'])->name('biotime.marcacion');
 
+// ticket
+route::get('categoriaticket',[CatatencionesController::class,'index'])->name('ticket.index');// categoria de atenciones
+route::get('ticket/pendientes',[TicketController::class,'pendientes'])->name('ticket.pendientes');// listar atenciones segun la dependencia del usuario y los que se atendio ya no va figurar
+route::get('ticket/tipoayuda',[TicketController::class,'tipoayuda'])->name('ticket.tipoayuda');// listar atenciones segun la dependencia del usuario y los que se atendio ya no va figurar
+route::get('ticket/soporte/users',[TicketController::class,'userssoporte'])->name('ticket.userssoporte');
+route::get('ticket/porcentajeatencion',[TicketController::class,'porcentajeatencion'])->name('ticket.porcentajeatencion');
+route::get('ticket/misticket',[TicketController::class,'misticket'])->name('ticket.misticket');
 
+// DEPENDENCIA
+Route::get('dependencia/usuariosoficina', [Dependencia::class, 'usuariosoficina'])->name('dependencia.usuariosoficina');
+Route::get('dependencia/soporteinformatico', [Dependencia::class, 'soporteinformatico'])->name('dependencia.soporteinformatico');
+Route::get('dependencia/soportedj', [Dependencia::class, 'soportedj'])->name('dependencia.soportedj');
 
 
 
