@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\PideController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +44,7 @@ route::post('ticket/crear',[TicketController::class,'crear'])->name('ticket.crea
 route::post('ticket/atender',[TicketController::class,'atender'])->name('ticket.atender');
 route::post('ticket/finalizar',[TicketController::class,'finalizar'])->name('ticket.finalizar');
 route::post('ticket/Reporte',[TicketController::class,'Reporte'])->name('ticket.misticket');
+
+Route::post('qaliwarma', [PideController::class, 'qaliwarma'])->name('pide.qaliwarma');
 
 

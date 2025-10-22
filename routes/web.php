@@ -23,6 +23,7 @@ use App\Http\Controllers\DnipcmController;
 
 use App\Http\Controllers\CatatencionesController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\PideController;
 
 
 /*
@@ -147,7 +148,23 @@ Route::get('dependencia/usuariosoficina', [Dependencia::class, 'usuariosoficina'
 Route::get('dependencia/soporteinformatico', [Dependencia::class, 'soporteinformatico'])->name('dependencia.soporteinformatico');
 Route::get('dependencia/soportedj', [Dependencia::class, 'soportedj'])->name('dependencia.soportedj');
 
-
+// PIDE
+Route::get('sis/{dni}', [PideController::class, 'sis'])->name('pide.sis');
+Route::get('essalud/{dni}', [PideController::class, 'essalud'])->name('pide.essalud');
+Route::get('sunat/{ruc}', [PideController::class, 'sunat'])->name('pide.sunat');
+Route::get('antecedentejudicial/{pat}/{mat}/{nom}', [PideController::class, 'antecedentejudicial'])->name('pide.antecedentejudicial');
+Route::get('proveedorsancionado/{ruc}', [PideController::class, 'proveedorsancionado'])->name('pide.proveedorsancionado');
+Route::get('busprocselxexpediente/{exp}', [PideController::class, 'busprocselxexpediente'])->name('pide.busprocselxexpediente');
+Route::get('busprocselxrucaniomes/{ruc}/{anio}/{mes}', [PideController::class, 'busprocselxrucaniomes'])->name('pide.busprocselxrucaniomes');
+Route::get('proveedoradjudicadoxexpediente/{exp}', [PideController::class, 'proveedoradjudicadoxexpediente'])->name('pide.proveedoradjudicadoxexpediente');
+Route::get('proveeadjxrucyanio/{ruc}/{anio}', [PideController::class, 'proveeadjxrucyanio'])->name('pide.proveeadjxrucyanio');
+Route::get('sunedu/{dni}', [PideController::class, 'sunedu'])->name('pide.sunedu');
+Route::get('gradoinstituto/{dni}', [PideController::class, 'gradoinstituto'])->name('pide.gradoinstituto');
+Route::get('infocolnacioparticular/{id}', [PideController::class, 'infocolnacioparticular'])->name('pide.infocolnacioparticular');
+Route::get('conadis/{dni}', [PideController::class, 'conadis'])->name('pide.conadis');
+Route::get('juntos/{dni}', [PideController::class, 'juntos'])->name('pide.juntos');
+Route::get('pension/{dni}', [PideController::class, 'pension'])->name('pide.pension');
+Route::get('toke_qaliwarma', [PideController::class, 'toke_qaliwarma'])->name('pide.toke_qaliwarma');
 
 Route::get('/{any?}', [HomeController::class, 'show'])->where('any', '^(?!api\/)[\/\w\.-]*');
 // Route::get('/', [HomeController::class, 'index']);

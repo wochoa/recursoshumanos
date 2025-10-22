@@ -93,7 +93,7 @@ class DnipcmController extends Controller
 
         //buscamos si tiene el paquete
 
-        $key=$request->key;//env("JWT_SECRET");// token del API
+        $key=env('KEY_DNI');//$request->key;//env("JWT_SECRET");// token del API
 
         if($key==$keybd)
         {
