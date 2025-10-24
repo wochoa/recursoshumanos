@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\DnipcmController;
 
 class PideController extends Controller
 {
@@ -215,6 +216,55 @@ class PideController extends Controller
 
         return $resul->token;
     }
+
+    public function perjuridica($ruc)
+    {
+        $datos=json_decode($this->sunat($ruc));
+
+        $razonsocial= $datos->ddp_nombre;
+        $url='https://ws2.pide.gob.pe/Rest/SUNARP/BPJRSocial?usuario=20489250731-REGIONHUANUCO&clave=iT2FoXJg!PPkrij&razonSocial='.urlencode($razonsocial).'&out=Json';
+        $wsdl = Http::get($url);
+        // return $wsdl;
+        return response($wsdl, 200)
+        ->header('Content-Type', 'text/html');        
+    }
+
+    public function sunarpoficinas()
+    {
+         $url='https://ws2.pide.gob.pe/Rest/SUNARP/GOficina?usuario=20489250731-REGIONHUANUCO&clave=iT2FoXJg!PPkrij&out=json';
+         $wsdl = Http::get($url);
+         $array=json_decode($wsdl);
+         return $array->oficina;
+    }
+
+    public function sunarpropiedaddni($dni)
+    {
+        // buscamos los nombres por dni
+
+        $datos = new DnipcmController();
+        $data=$datos->getdni($dni,env('KEY_DNI'));
+
+        $apellidoPaterno=$data['apPrimer'];
+        $apellidoMaterno=$data['apSegundo'];
+        $nombres=$data['prenombres'];
+
+         $url='https://ws2.pide.gob.pe/Rest/SUNARP/TSIRSARP?usuario=20489250731-REGIONHUANUCO&clave=iT2FoXJg!PPkrij&tipoParticipante=N&apellidoPaterno='.$apellidoPaterno.'&apellidoMaterno='.$apellidoMaterno.'&nombres='.$nombres.'&out=json';
+         $wsdl = Http::get($url);
+         $array=json_decode($wsdl);
+         return $array->buscarTitularidadSIRSARPResponse->respuestaTitularidad;
+    }
+    public function sunarpropiedadruc($ruc)
+    {
+       $datos=json_decode($this->sunat($ruc));
+
+        $razonsocial= $datos->ddp_nombre;
+
+         $url='https://ws2.pide.gob.pe/Rest/SUNARP/TSIRSARP?usuario=20489250731-REGIONHUANUCO&clave=iT2FoXJg!PPkrij&tipoParticipante=J&razonSocial='.urlencode($razonsocial).'&out=json';
+         $wsdl = Http::get($url);
+         $array=json_decode($wsdl);
+         return $array->buscarTitularidadSIRSARPResponse->respuestaTitularidad;
+    }
+
 
     function getRemoteFile($url, $timeout = 10) {
 	$ch = curl_init();

@@ -166,5 +166,11 @@ Route::get('juntos/{dni}', [PideController::class, 'juntos'])->name('pide.juntos
 Route::get('pension/{dni}', [PideController::class, 'pension'])->name('pide.pension');
 Route::get('toke_qaliwarma', [PideController::class, 'toke_qaliwarma'])->name('pide.toke_qaliwarma');
 
+// pide sunarp
+Route::get('sunarp/perjuridica/{ruc}', [PideController::class, 'perjuridica'])->name('pide.sunarp.perjuridica');
+Route::get('sunarp/oficinas', [PideController::class, 'sunarpoficinas'])->name('pide.sunarpoficinas');
+Route::get('sunarp/propiedaddni/{dni}', [PideController::class, 'sunarpropiedaddni'])->name('pide.propiedaddni');
+Route::get('sunarp/propiedadruc/{ruc}', [PideController::class, 'sunarpropiedadruc'])->name('pide.sunarpropiedadruc');
+
 Route::get('/{any?}', [HomeController::class, 'show'])->where('any', '^(?!api\/)[\/\w\.-]*');
 // Route::get('/', [HomeController::class, 'index']);
