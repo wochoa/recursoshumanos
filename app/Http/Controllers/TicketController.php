@@ -76,7 +76,7 @@ class TicketController extends Controller
         $nuveoticket->iduser=auth()->user()->id;
         $nuveoticket->idoficina=auth()->user()->depe_id;
         $nuveoticket->codejecutora=$iddepe;
-        $nuveoticket->ayudasede=$request->ayudasede;
+        $nuveoticket->ayudasede=$request->ayudaCentral;
         $nuveoticket->tipoayuda=$request->ayuda;
         $nuveoticket->detalleayuda=$request->descripcion;
         $nuveoticket->prioridad=$request->prioridad;
