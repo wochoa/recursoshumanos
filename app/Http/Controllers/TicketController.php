@@ -38,7 +38,7 @@ class TicketController extends Controller
             $query->where('codejecutora', $iddepe);
             })
             ->orWhere(function ($query) {
-                $query->where('ayudasede', 1);
+                $query->where('ayudasede', 3);
             })->with('oficina')->with('catticket')->paginate(10); // Cambia 10 por la cantidad de registros por página
         }
         else
