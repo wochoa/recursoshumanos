@@ -43,7 +43,7 @@ class DnipcmController extends Controller
         $password=$consulta->nuDni;
         $keybd=$consulta->key;
 
-        $key=$key;//env("JWT_SECRET");// token del API
+        $key=env('KEY_DNI');//$key;//env("JWT_SECRET");// token del API
 
         if($key==$keybd)
         {
@@ -52,6 +52,7 @@ class DnipcmController extends Controller
             $response_data = json_decode($api);
                 
             $return=$response_data->consultarResponse->return;
+            return $return;
 
             if($return->coResultado="0000")
             {
