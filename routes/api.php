@@ -43,7 +43,7 @@ Route::group([
 route::post('ticket/crear',[TicketController::class,'crear'])->name('ticket.crear');// listar atenciones segun la dependencia del usuario y los que se atendio ya no va figurar
 route::post('ticket/atender',[TicketController::class,'atender'])->name('ticket.atender');
 route::post('ticket/finalizar',[TicketController::class,'finalizar'])->name('ticket.finalizar');
-route::post('ticket/Reporte',[TicketController::class,'Reporte'])->name('ticket.misticket');
+route::post('ticket/Reporte',[TicketController::class,'Reporte'])->name('ticket.reporte');
 
 Route::post('qaliwarma', [PideController::class, 'qaliwarma'])->name('pide.qaliwarma');
 
