@@ -52,7 +52,7 @@ class DnipcmController extends Controller
             $response_data = json_decode($api);
                 
             $return=$response_data->consultarResponse->return;
-            return $return;
+            // return $return;
 
             if($return->coResultado="0000")
             {

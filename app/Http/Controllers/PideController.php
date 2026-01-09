@@ -244,6 +244,7 @@ class PideController extends Controller
         $datos = new DnipcmController();
         $data=$datos->getdni($dni,env('KEY_DNI'));
 
+        // print_r($data);
         $apellidoPaterno=$data['apPrimer'];
         $apellidoMaterno=$data['apSegundo'];
         $nombres=$data['prenombres'];
