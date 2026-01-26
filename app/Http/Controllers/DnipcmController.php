@@ -84,7 +84,13 @@ class DnipcmController extends Controller
     public function consultadni(Request $request)
     {
         // dni
-        $consulta=Dnipcm::where('estado',1)->first();
+        if($request->estado){
+             $consulta=Dnipcm::where('estado',2)->first();
+        }
+        else{
+            $consulta=Dnipcm::where('estado',1)->first();
+        }
+        
 
         $nuDniConsulta=$request->dni;
         $nuDniUsuario=$consulta->nuDni;
@@ -94,7 +100,7 @@ class DnipcmController extends Controller
 
         //buscamos si tiene el paquete
 
-        $key=env('KEY_DNI');//$request->key;//env("JWT_SECRET");// token del API
+        $key=$request->key?$request->key:env('KEY_DNI');//$request->key;//env("JWT_SECRET");// token del API
 
         if($key==$keybd)
         {
